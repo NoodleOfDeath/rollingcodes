@@ -9,9 +9,11 @@ import {
 } from '@mdi/js';
 import styled from 'styled-components';
 
-import { Section } from './Section';
-
-import { Anchor, Stack } from '~/components';
+import {
+  Anchor,
+  Section,
+  Stack,
+} from '~/components';
 
 const StyledContainer = styled.div`
   display: flex;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Stack, StackProps } from '~/components';
+import { Stack, StackProps } from './common';
 
 export type SectionProps = React.PropsWithChildren<{
   header?: React.ReactNode;
