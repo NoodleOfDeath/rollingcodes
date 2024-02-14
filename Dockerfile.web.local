@@ -1,0 +1,15 @@
+FROM --platform=linux/amd64 node:19.3.0 AS base
+
+# copy project resources
+WORKDIR /home/node/app
+
+COPY tsconfig.json ./
+COPY next-env.d.ts ./
+COPY next.config.js ./
+COPY package.json ./
+COPY yarn.lock ./
+COPY src ./src
+RUN yarn install --non-interactive --immutable
+
+# launch container
+CMD yarn dev
