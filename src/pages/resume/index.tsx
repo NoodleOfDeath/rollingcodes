@@ -19,7 +19,6 @@ const StyledContainer = styled.div`
   display: flex;
   max-width: 1000px;
   margin: auto;
-  border: 1px solid black;
 `;
 
 const StyledLeftColumn = styled.div`
@@ -30,7 +29,6 @@ const StyledLeftColumn = styled.div`
 
 const StyledRightColumn = styled.div`
   flex: 2;
-  border-left: 1px solid black;
 `;
 
 const StyledHeader = styled.header`
