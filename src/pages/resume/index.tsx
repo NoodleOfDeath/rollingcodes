@@ -17,6 +17,7 @@ import {
 
 const StyledContainer = styled.div`
   display: flex;
+  min-width: 1000px;
   max-width: 1000px;
   margin: auto;
 `;
