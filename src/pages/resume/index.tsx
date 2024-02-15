@@ -9,15 +9,17 @@ import {
 } from '@mdi/js';
 import styled from 'styled-components';
 
-import { Section } from './Section';
-
-import { Anchor, Stack } from '~/components';
+import {
+  Anchor,
+  Section,
+  Stack,
+} from '~/components';
 
 const StyledContainer = styled.div`
   display: flex;
+  min-width: 1000px;
   max-width: 1000px;
   margin: auto;
-  border: 1px solid black;
 `;
 
 const StyledLeftColumn = styled.div`
@@ -28,7 +30,6 @@ const StyledLeftColumn = styled.div`
 
 const StyledRightColumn = styled.div`
   flex: 2;
-  border-left: 1px solid black;
 `;
 
 const StyledHeader = styled.header`
