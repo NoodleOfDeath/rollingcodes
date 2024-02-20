@@ -128,7 +128,7 @@ const Index = () => {
   });
   return (
     <Stack>
-      <StyledButton onClick={ toPDF }>
+      <StyledButton onClick={ () => toPDF() }>
         Download PDF
       </StyledButton>
       <StyledContainer ref={ targetRef }>
