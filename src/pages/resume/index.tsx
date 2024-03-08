@@ -65,13 +65,13 @@ const StyledHeaderContent = styled.div`
 `;
 
 const StyledSubheader = styled.div`
-  font-size: 1.2rem;
+  font-weight: bold;
 `;
 
 const StyledSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   padding: 1rem;
 `;
 
@@ -173,29 +173,32 @@ const Index = () => {
                   <StyledSubheader>Minor: Film Studies</StyledSubheader>
                 </Stack>
               ) } />
-            <Section header="Skills" gap="1.25rem">
-              <Section nested header="Methodolgies">
+            <Section header="Skills" gap="0.5rem">
+              <Section nested header="Methodologies">
                 AGILE; Kanban; Waterfall;
               </Section>
-              <Section nested header="Languages">
-                ANTLR4; Brainfuck; C; C#; C++; CSS
+              <Section nested header="Favorite Languages">
+                Python; Swift; TypeScript; V;
+              </Section>
+              <Section nested header="All Languages">
+                ANTLR4; C; C#; C++; CSS
                 ; Go; HTML; Java; JavaScript; JSON;
                 LaTeX; MatLab; MySQL; NoSQL;
                 ObjectiveC; PERL; PHP;
                 PostgreSQL; Python; R; Ruby; Rust
                 ; SCSS; Shell; Solidity; SQL; Swift;
-                SwiftUI; TypeScript; Whitespace;
+                SwiftUI; TypeScript;
                 XHTML; XML; YAML;
               </Section>
               <Section nested header="Libraries, Frameworks, and Platforms">
                 Angularjs; Angular 8+; Asana;
                 Atlassian (JIRA
                 Confluence);
-                Bootstrap; Cordova; Docker;
-                FastAPI; Flutter; Gradle; GraphQL;
+                Bootstrap; Cordova; Docker; Express;
+                FastAPI; Flutter; Gradle; GraphQL; gRPC;
                 jQuery; Nextjs; Nodejs; Nuxtjs;
-                Pandas; PyTorch; Reactjs; React-
-                Native; Tailwind CSS; Tensorflow;
+                Pandas; Protobuffs; PyTorch; Reactjs; React-
+                Native; REST APIs, Tailwind CSS; Tensorflow;
                 Vuejs; WordPress;
               </Section>
               <Section nested header="CI/CD, DevOps, and Cloud">
@@ -216,7 +219,7 @@ const Index = () => {
                 CATIA; Gazebo; MuJoCo;
               </Section>
               <Section nested header="Certifications">
-                Offensive Security Certified Professional (OSCP); Professional Scrum Master I (PSM I); AWS Developer Certified;
+                AWS Developer Certified; Offensive Security Certified Professional (OSCP); Professional Scrum Master I (PSM I); 
               </Section>
             </Section>
           </StyledSectionContainer>
@@ -224,36 +227,37 @@ const Index = () => {
         <StyledRightColumn>
           <StyledSectionContainer>
             <Section header="Summary">
-            <StyledParagraph>I am a Full Stack Engineer and Mobile Application Engineer with over 10 years of professional experience with expertise in Agile, Kanban, and Waterfall methodologies. I have worked closely with product owners and clients to seek requirements and address customer requests in production in a timely fashion.</StyledParagraph>
+              <StyledParagraph>I am a Full Stack Engineer and Penetration Tester with over 10 years of professional experience in end-to-end web app development, mobile app development, CI/CD, offensive security hardening, robotics, and data science.</StyledParagraph>
             </Section>
             <Section header="Work Experience" gap="1.25rem">
               <WorkExperience  
-                title="Senior Full Stack Engineer, iOS/Android Engineer"
+                title="Senior Full Stack Engineer &amp; Penetration Tester"
                 company="Boston Dynamics"
-                startDate={ new Date('2020-04-15') }
+                startDate={ new Date('2020-06-15') }
                 location="Waltham, MA"
                 achievements={ [
+                  'Rearchitected and fine tuned various perception AI models used by Spot and Atlas, improving their success rate of climbing debris without falling over from 60% to 99.9%',
                   'Redesigned the React web application and native Android application for Stretch leading to 25% fewer direct support requests from customers.',
                   'Designed, implemented, and lead a team of engineers to reengineer the native Spot iOS app and SDK increasing developer SDK downloads by more than 20% a month.',
-                  'Staged, tested, and deployed Mobile Device Management (MDM) for tablet devices improving security and ensuring business with several customers who labeled MDM as a dealbreaking requirement.',
+                  'Staged, tested, and deployed Mobile Device Management (MDM) for tablet devices improving security and ensuring $50M in deals with customers who labeled MDM as a dealbreaking requirement.',
                   'Refactored unit, systems, simulations (Gazebo and MuJoCo), and end-to-end tests (Selenium/Playwright) that reduced CI/CD pipeline costs by about 35%.',
                 ] } />
               <WorkExperience  
-                title="Senior Full Stack Engineer (Part-Time/Contract)"
+                title="Senior Full Stack Engineer &amp; Data Scientist"
                 company="Absci Corp"
-                startDate={ new Date('2020-06-15') }
-                endDate={ new Date('2022-06-15') }
+                startDate={ new Date('2018-06-15') }
+                endDate={ new Date('2020-06-15') }
                 location="Remote"
                 achievements={ [
+                  'Engineered generative adversarial neural networks to produce DNA sequences of potential markers that maximize gene affinity, beating the previous algorithm\'s accuracy of identifying key biological markers by 20%.',
                   'Developed and deployed end-to-end applications resulting in a 50% increase in the speed at which genomes could be submitted and sequenced by biologists.',
-                  'Built end-to-end applications using FastAPI and Vue.js to support the scientists and product owners in making budgeting decisions.',
-                  'Engineered generative adversarial neural networks to produce DNA sequences of potential markers that maximize gene affinity, beating the previous algorithm\'s accuracy of identifying key biological markers by 15%.',
+                  'Data mined APIs and designed data visualizations that provided scientists and product owners with the necessary KPIs to facilitate budgeting decisions.',
                 ] } />
               <WorkExperience  
-                title="Full Stack Engineer, iOS Engineer, and Android Engineer"
+                title="Senior Full Stack Engineer &amp; iOS/Android Engineer"
                 company="Unisys Federal SAIC"
-                startDate={ new Date('2016-05-15') }
-                endDate={ new Date('2020-06-15') }
+                startDate={ new Date('2014-05-15') }
+                endDate={ new Date('2018-06-15') }
                 location="Alexandria, VA"
                 achievements={ [
                   'Ported over a dozen existing ReactJS/Angular.js web applications into native and React-Native mobile applications increasing the number of CBP interceptions by over 1000% (not a typo) than in previous years.',
@@ -262,7 +266,7 @@ const Index = () => {
             </Section>
             <Section header="Projects" gap="1.5rem">
               <WorkExperience
-                title="Lead Full Stack Engineer, iOS/Android Engineer, DevOps Engineer"
+                title="Lead Full Stack, iOS/Android, DevOps Engineer"
                 company="Read Less LLC"
                 startDate={ new Date('2023-02-20') }
                 location="Remote"
