@@ -277,7 +277,7 @@ const Index = () => {
                     color='blue'>
                     https://github.com/noodleofdeath/readless
                   </Anchor>
-                )}
+                ) }
                 achievements={ [
                   'Developed and app that provides users with concise and accessible news with support for over 40 languages.',
                   'Designed and developed the Express API, leveraging Sequelize ORM and PostgreSQL, reducing MVP development time to under 2 weeks.',
