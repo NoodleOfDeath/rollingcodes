@@ -216,7 +216,7 @@ const Index = () => {
                 VSCode; XCode; Yarn;
               </Section>
               <Section nested header="Simulations/CAD Software">
-                CATIA; Gazebo; MuJoCo;
+                CATIA; Gazebo; MuJoCo; Blender;
               </Section>
               <Section nested header="Certifications">
                 AWS Developer Certified; Offensive Security Certified Professional (OSCP); Professional Scrum Master I (PSM I); 
