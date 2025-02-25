@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  mdiBeer,
   mdiCalendar,
   mdiEmail,
   mdiGithub,
@@ -263,7 +264,38 @@ const Index = () => {
                   'Ported over a dozen existing ReactJS/Angular.js web applications into native and React-Native mobile applications increasing the number of CBP interceptions by over 1000% (not a typo) than in previous years.',
                   'Refactored the codebase, using best practices, reducing build times and cutting CI/CD costs by nearly 50% ',
                 ] } />
-              </Section>
+            </Section>
+            <Section header="Projects" gap="1.5rem">
+              <WorkExperience
+                title="Lead Full Stack, iOS/Android, DevOps Engineer"
+                company="Read Less LLC"
+                startDate={ new Date('2023-02-20') }
+                location={ (
+                  <Stack direction="row" spacing="2">
+                    <Anchor 
+                      href="https://drunkmode.app" 
+                      target="_blank"
+                      icon={ mdiBeer }
+                      color='blue'>
+                      drunkmode.app
+                    </Anchor>
+                    <Anchor 
+                      href="https://github.com/NoodleOfDeath/react-native-screen-time-api" 
+                      target="_blank"
+                      icon={ mdiGithub }
+                      color='blue'>
+                      react-native-screen-time-api
+                    </Anchor>
+                  </Stack>
+                ) }
+                achievements={ [
+                  'Developed an iOS app to help users prevent themselves from drunk texting or using other apps irresponsibly.',
+                  'Open sourced the underlying Screen Time API feature code as a react native library.',
+                  'Designed and developed the Express API, leveraging Sequelize ORM and PostgreSQL, reducing MVP development time to under 2 weeks.',
+                  'Designed and developed the React web application in 1 day.',
+                  'Configured and deployed to Kubernetes clusters, DNS, SSL, and CI/CD pipelines coupled with Github Actions, cutting operation costs to less than $80/month.',
+                ] } />
+            </Section>
           </StyledSectionContainer>
         </StyledRightColumn>
       </StyledContainer>
