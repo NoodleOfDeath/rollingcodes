@@ -263,30 +263,7 @@ const Index = () => {
                   'Ported over a dozen existing ReactJS/Angular.js web applications into native and React-Native mobile applications increasing the number of CBP interceptions by over 1000% (not a typo) than in previous years.',
                   'Refactored the codebase, using best practices, reducing build times and cutting CI/CD costs by nearly 50% ',
                 ] } />
-            </Section>
-            <Section header="Projects" gap="1.5rem">
-              <WorkExperience
-                title="Lead Full Stack, iOS/Android, DevOps Engineer"
-                company="Read Less LLC"
-                startDate={ new Date('2023-02-20') }
-                location={ (
-                  <Anchor 
-                    href="https://github.com/noodleofdeath/readless" 
-                    target="_blank"
-                    icon={ mdiGithub }
-                    color='blue'>
-                    https://github.com/noodleofdeath/readless
-                  </Anchor>
-                ) }
-                achievements={ [
-                  'Developed and app that provides users with concise and accessible news with support for over 40 languages.',
-                  'Designed and developed the Express API, leveraging Sequelize ORM and PostgreSQL, reducing MVP development time to under 2 weeks.',
-                  'Engineered an on-demand automated worker queue to interface with more than 3 REST APIs including OpenAI\'s completion API, DeepAI\'s image generation API, and Resemble.ai\'s voice cloning API.',
-                  'Developed a puppeteer web scraper that crawls over 100 news.',
-                  'Designed and developed the React web application.',
-                  'Configured and deployed to Kubernetes clusters, DNS, SSL, and CI/CD pipelines coupled with Github Actions, cutting operation costs to less than $500/month.',
-                ] } />
-            </Section>
+              </Section>
           </StyledSectionContainer>
         </StyledRightColumn>
       </StyledContainer>
