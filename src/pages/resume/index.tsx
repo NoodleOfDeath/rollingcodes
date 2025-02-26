@@ -118,9 +118,11 @@ const WorkExperience = ({
             { ['Released on', format(releaseDate, 'MMM yyyy')].join(' ') }
           </Anchor>
         )}
-        <Anchor icon={ mdiPin }>
-          {location}
-        </Anchor>
+        {location && (
+          <Anchor icon={ mdiPin }>
+            {location}
+          </Anchor>
+        )}
       </Stack>
       <Stack gap="0.25rem">
         {achievements.map((achievement, index) => (
