@@ -115,7 +115,7 @@ const WorkExperience = ({
         {releaseDate && (
           <Anchor 
             icon={ mdiApple }>
-            {format(releaseDate, 'MMM yyyy')}
+            { ${['Released on', format(releaseDate, 'MMM yyyy')].join(' ')] } 
           </Anchor>
         )}
         <Anchor icon={ mdiPin }>
