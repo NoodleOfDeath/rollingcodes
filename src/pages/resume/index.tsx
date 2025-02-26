@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  mdiApple,
   mdiBeer,
   mdiCalendar,
   mdiEmail,
@@ -83,8 +84,9 @@ const StyledParagraph = styled.li`
 type WorkExperienceProps = React.PropsWithChildren<{
   company: React.ReactNode;
   title: React.ReactNode;
-  startDate: Date;
+  startDate?: Date;
   endDate?: Date;
+  releaseDate?: string;
   location: React.ReactNode;
   achievements: React.ReactNode[];
 }>;
@@ -94,6 +96,7 @@ const WorkExperience = ({
   title,
   startDate,
   endDate,
+  releaseDate,
   location,
   achievements,
 }: WorkExperienceProps) => {
@@ -103,10 +106,18 @@ const WorkExperience = ({
       header={ title }
       subheader={ company }>
       <Stack row gap="1rem">
-        <Anchor 
-          icon={ mdiCalendar }>
-          { `${ format(startDate, 'MMM yyyy') } - ${ endDate ? format(endDate, 'MMM yyyy') : 'present' }` }
-        </Anchor>
+        {startDate && (
+          <Anchor 
+            icon={ mdiCalendar }>
+            { `${ format(startDate, 'MMM yyyy') } - ${ endDate ? format(endDate, 'MMM yyyy') : 'present' }` }
+          </Anchor>
+        )}
+        {releaseDate && (
+          <Anchor 
+            icon={ mdiApple }>
+            {format(releaseDate, 'MMM yyyy')}
+          </Anchor>
+        )}
         <Anchor icon={ mdiPin }>
           {location}
         </Anchor>
@@ -269,7 +280,7 @@ const Index = () => {
               <WorkExperience
                 title="Lead Full Stack, iOS/Android, DevOps Engineer"
                 company="Read Less LLC"
-                startDate={ new Date('2023-02-20') }
+                releaseDate={ new Date('2024-02-20') }
                 location={ (
                   <Stack row gap="1rem">
                     <Anchor 
