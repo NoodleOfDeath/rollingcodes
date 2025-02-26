@@ -86,7 +86,7 @@ type WorkExperienceProps = React.PropsWithChildren<{
   title: React.ReactNode;
   startDate?: Date;
   endDate?: Date;
-  releaseDate?: string;
+  releaseDate?: Date;
   location: React.ReactNode;
   achievements: React.ReactNode[];
 }>;
