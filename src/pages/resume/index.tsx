@@ -271,7 +271,7 @@ const Index = () => {
                 company="Read Less LLC"
                 startDate={ new Date('2023-02-20') }
                 location={ (
-                  <Stack direction="row" spacing="2">
+                  <Stack row gap="1rem">
                     <Anchor 
                       href="https://drunkmode.app" 
                       target="_blank"
