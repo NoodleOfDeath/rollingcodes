@@ -106,16 +106,16 @@ const WorkExperience = ({
       header={ title }
       subheader={ company }>
       <Stack row gap="1rem">
-        {startDate && (
+        {startDate != null && (
           <Anchor 
             icon={ mdiCalendar }>
             { `${ format(startDate, 'MMM yyyy') } - ${ endDate ? format(endDate, 'MMM yyyy') : 'present' }` }
           </Anchor>
         )}
-        {releaseDate && (
+        {releaseDate != null && (
           <Anchor 
             icon={ mdiApple }>
-            { ['Released on', format(releaseDate, 'MMM yyyy')].join(' ') }
+            { ['Released on', format(releaseDate, 'MMM d, yyyy')].join(' ') }
           </Anchor>
         )}
         {location && (
@@ -172,7 +172,7 @@ const Index = () => {
                 href="https://www.github.com/noodleofdeath"
                 target="_blank"
                 icon={ mdiGithub }
-                color='white'>
+                color='cyan'>
                 www.github.com/noodleofdeath
               </Anchor>
             </StyledHeaderContent>
@@ -248,13 +248,13 @@ const Index = () => {
                 title="Senior Full Stack Engineer &amp; Penetration Tester"
                 company="Boston Dynamics"
                 startDate={ new Date('2020-06-15') }
-                location="Waltham, MA"
+                location="Everett, MA"
                 achievements={ [
-                  'Rearchitected and fine tuned various perception AI models used by Spot and Atlas, improving their success rate of climbing debris without falling over from 60% to 99.9%',
-                  'Redesigned the React web application and native Android application for Stretch leading to 25% fewer direct support requests from customers.',
+                  'Redesigned the React web application and native Android application for Stretch leading to 25% fewer support requests from customers.',
                   'Designed, implemented, and lead a team of engineers to reengineer the native Spot iOS app and SDK increasing developer SDK downloads by more than 20% a month.',
                   'Staged, tested, and deployed Mobile Device Management (MDM) for tablet devices improving security and ensuring $50M in deals with customers who labeled MDM as a dealbreaking requirement.',
                   'Refactored unit, systems, simulations (Gazebo and MuJoCo), and end-to-end tests (Selenium/Playwright) that reduced CI/CD pipeline costs by about 35%.',
+                  'Rearchitected and fine tuned various perception AI models used by Spot and Atlas, improving their success rate of climbing debris without falling over from 60% to 99.9%',
                 ] } />
               <WorkExperience  
                 title="Senior Full Stack Engineer &amp; Data Scientist"
