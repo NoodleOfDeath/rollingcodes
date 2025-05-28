@@ -1,0 +1,19 @@
+FROM --platform=linux/amd64 node:21.7.1 AS base
+
+WORKDIR /home/node/app
+COPY src/server/package.json ./
+COPY src/server/yarn.lock ./
+COPY src/server/src ./src
+RUN yarn install --non-interactive --immutable
+
+FROM base AS dev
+COPY src/server/tsconfig.json ./
+COPY src/server/tsconfig.build.json ./
+COPY src/server/serve-api.ts ./
+COPY src/server/nodemon.api.json ./
+COPY src/server/tsoa.config.json ./
+COPY src/server/gen-sql-queries.ts ./
+RUN yarn sql
+RUN yarn cp
+RUN yarn tsoa
+CMD yarn dev:api

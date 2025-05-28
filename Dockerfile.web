@@ -1,0 +1,33 @@
+FROM --platform=linux/amd64 node:21.7.1 AS base
+
+# copy project resources
+WORKDIR /home/node
+COPY src/core ./core
+COPY src/server ./server
+COPY src/cpcore.ts ./
+
+WORKDIR /home/node/app
+COPY src/web/src ./src
+COPY src/web/package.json ./
+COPY src/web/yarn.lock ./
+RUN yarn install --non-interactive --immutable
+
+COPY src/web/tsconfig.json ./
+COPY src/web/next-env.d.ts ./
+COPY src/web/next.config.js ./
+COPY src/web/public ./public
+RUN yarn cp
+RUN yarn tsoa
+
+ARG NEXT_PUBLIC_BASE_URL
+ENV NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+ARG NEXT_PUBLIC_API_ENDPOINT
+ENV NEXT_PUBLIC_API_ENDPOINT=${NEXT_PUBLIC_API_ENDPOINT}
+RUN echo > .env
+RUN echo NEXT_PUBLIC_BASE_URL=\"${NEXT_PUBLIC_BASE_URL}\" >> .env
+RUN echo NEXT_PUBLIC_API_ENDPOINT=\"${NEXT_PUBLIC_API_ENDPOINT}\" >> .env
+
+# run build
+ENV NODE_ENV=production
+RUN yarn build
+CMD yarn start
