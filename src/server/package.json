@@ -11,17 +11,18 @@
   ],
   "type": "module",
   "scripts": {
-    "start:api": "node dist/serve-api.cjs",
-    "dev:api": "nodemon --config nodemon.api.json -x 'tsx ./serve-api'",
-    "build:api": "rimraf dist/serve-api.cjs && esbuild ./src/api --bundle --platform=node --external:jsdom --outfile=./dist/serve-api.cjs",
-    "gen:site": "yarn test gen",
-    "sql": "tsx ./gen-sql-queries",
+    "dev": "next dev -p 6969",
+    "start": "next start",
+    "build": "next build",
+    "export": "yarn build && next export",
     "test": "jest",
-    "tsoa": "tsx ./tsoa-gen",
-    "cp:core": "tsx ../cpcore.ts server",
+    "eject": "next eject",
+    "cp:core": "tsx ../cpcore.ts client locales",
     "cp": "yarn cp:core",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "lint": "eslint .",
+    "format": "eslint . --fix",
+    "gen": "npx -y swagger-typescript-api@13.0.23 --disable-throw-on-error -p openapi.json -o ./src/gen",
+    "tsoa": "(cd ../server && yarn cp && yarn tsoa) && cp ../server/static/openapi.json . && yarn gen"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.282.0",

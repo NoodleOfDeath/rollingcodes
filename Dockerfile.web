@@ -3,7 +3,7 @@ FROM node:bullseye
 WORKDIR /home/node
 COPY src/core ./core
 COPY src/cpcore.ts ./
-COPY src/localize.ts ./
+# COPY src/localize.ts ./
 
 WORKDIR /home/node/server
 COPY src/server/src ./src
