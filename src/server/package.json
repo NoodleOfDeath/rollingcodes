@@ -17,7 +17,7 @@
     "gen:site": "yarn test gen",
     "sql": "tsx ./gen-sql-queries",
     "test": "jest",
-    "tsoa": "tsoa spec -c tsoa.config.json",
+    "tsoa": "tsx ./tsoa-gen",
     "cp:core": "tsx ../cpcore.ts server",
     "cp": "yarn cp:core",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
