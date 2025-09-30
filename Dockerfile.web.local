@@ -1,0 +1,15 @@
+FROM --platform=linux/amd64 node:21.7.1 AS base
+
+# copy project resources
+WORKDIR /home/node/app
+
+COPY src/web/tsconfig.json ./
+COPY src/web/next-env.d.ts ./
+COPY src/web/next.config.js ./
+COPY src/web/package.json ./
+COPY src/web/yarn.lock ./
+COPY src/web/src ./src
+RUN yarn install --non-interactive --immutable
+
+# launch container
+CMD yarn dev
