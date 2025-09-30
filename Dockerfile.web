@@ -1,32 +1,15 @@
 FROM node:bullseye
 
-WORKDIR /home/node
-COPY src/core ./core
-COPY src/cpcore.ts ./
-# COPY src/localize.ts ./
-
-WORKDIR /home/node/server
-COPY src/server/src ./src
-COPY src/server/gen-sql-queries.ts ./
-COPY src/server/package.json ./
-COPY src/server/tsconfig.json ./
-COPY src/server/tsconfig.build.json ./
-COPY src/server/tsoa-gen.ts ./
-COPY src/server/tsoa.config.json ./
-RUN yarn install --non-interactive --immutable
-
 WORKDIR /home/node/app
 COPY src/web/public ./public
 COPY src/web/src ./src
 COPY src/web/package.json ./
+COPY src/web/yarn.lock ./
 COPY src/web/tsconfig.json ./
 COPY src/web/next-env.d.ts ./
 COPY src/web/next.config.js ./
 
 RUN yarn install --non-interactive --immutable
-
-RUN yarn cp
-RUN yarn tsoa
 
 ARG NEXT_PUBLIC_API_ENDPOINT
 ENV NEXT_PUBLIC_API_ENDPOINT=${NEXT_PUBLIC_API_ENDPOINT}

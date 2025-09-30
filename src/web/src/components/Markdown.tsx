@@ -2,9 +2,8 @@
 import React from 'react';
 
 import { Typography, styled } from '@mui/material';
+import { default as Link } from 'next/link';
 import ReactMarkdown from 'react-markdown';
-
-import { Link } from './common';
 
 const StyledTypography = styled(Typography)`
   color: ${({ theme }) => theme.palette.primary.main };
