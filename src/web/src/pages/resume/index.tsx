@@ -102,8 +102,8 @@ const WorkExperience = ({
   location,
   achievements,
 }: WorkExperienceProps) => {
-  const duration = intervalToDuration({ end: endDate ?? new Date(), start: startDate });
-  const timeInYears = `${duration.years} ${pluralize('year', duration.years)}${duration.months ? ` ${duration.months} ${pluralize('month', duration.months)}` : ''}`;
+  const duration = startDate ? intervalToDuration({ end: endDate ?? new Date(), start: startDate }) : null;
+  const timeInYears = duration ? `${duration.years} ${pluralize('year', duration.years)}${duration.months ? ` ${duration.months} ${pluralize('month', duration.months)}` : ''}` : '';
   return (
     <Section
       nested
