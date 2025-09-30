@@ -102,8 +102,7 @@ const Layout = ({
         minHeight: '100vh',
       } }
       { ...props }>
-      {/* header */}
-      <AppBar color='secondary' position='sticky'>
+      {/*<AppBar color='secondary' position='sticky'>
         <div
           style={ {
             alignItems: 'center',
@@ -124,7 +123,6 @@ const Layout = ({
           </Button>
         </div>
       </AppBar>
-      {/* content */}
       <div
         style={ {
           flexDirection: 'column',
@@ -136,7 +134,6 @@ const Layout = ({
         } }>
         {children}
       </div>
-      {/* footer */}
       <div 
         style={ {
           alignItems: 'center',
@@ -168,11 +165,10 @@ const Layout = ({
           </div>
           <Divider flexItem />
           <Typography>
-            Copyright &copy; 2024 Read Less LLC
+            Copyright &copy; 2025 Morgan Enterprise LLC
           </Typography>
         </div>
       </div>
-      {/* navigation */}
       <Drawer
         anchor='top'
         open={ drawerOpen }
@@ -222,7 +218,8 @@ const Layout = ({
             </div>
           </div>
         </div>
-      </Drawer>
+      </Drawer>*/}
+      {children}
     </div>
   );
 };
