@@ -14,9 +14,8 @@ import {
   Drawer,
   Typography,
 } from '@mui/material';
+import { default as Link } from 'next/link';
 import { useRouter } from 'next/router';
-
-import { Link, View } from '~/components';
 
 type LayoutProps = React.PropsWithChildren & {
   //
@@ -62,12 +61,14 @@ const FOOTER_LINKS = [
 const Logo = () => {
   return (
     <Link 
-      row
-      itemsCenter
-      href='/'
-      gap={ '0.5rem' }
-      fontSize={ '1.5rem' }
-      height="10">
+      style={ { 
+        alignItems: 'center',
+        flexDirection: 'row',
+        fontSize: '1.5rem',
+        gap: '0.5rem',
+        height: 10,
+      } }
+      href='/'>
       Rolling Codes
     </Link>
   );
@@ -94,46 +95,61 @@ const Layout = ({
   }, [router.events]);
   
   return (
-    <View col itemsCenter minHeight={ '100vh' } { ...props }>
-      {/* header */}
-      <AppBar color='secondary' position='sticky'>
-        <View
-          row
-          itemsCenter
-          justifyBetween
-          maxWidth='1000px'
-          marginX={ 'auto' }
-          width='calc(100% - 2rem)'
-          px='1rem'
-          py='0.5rem'>
+    <div
+      style={ {
+        alignItems: 'center',
+        flexDirection: 'column',
+        minHeight: '100vh',
+      } }
+      { ...props }>
+      {/*<AppBar color='secondary' position='sticky'>
+        <div
+          style={ {
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: '1000px',
+            padding: '1rem 0.5rem',
+            width: 'calc(100% - 2rem)',
+          } }>
           <Logo />
-          <View flexGrow={ 1 } />
+          <div style={ { flexGrow: 1 } } />
           <Button
             color='inherit'
             onClick={ () => setDrawerOpen(true) }>
             <Icon path={ mdiMenu } size={ 1 } />
           </Button>
-        </View>
+        </div>
       </AppBar>
-      {/* content */}
-      <View
-        col
-        padding='1rem'
-        maxWidth='1000px'
-        width='calc(100% - 2rem)'
-        minHeight={ 400 }
-        flexGrow={ 1 }
-        overflow='hidden'>
+      <div
+        style={ {
+          flexDirection: 'column',
+          flexGrow: 1,
+          maxWidth: '1000px',
+          overflow: 'hidden',
+          padding: '1rem',
+          width: 'calc(100% - 2rem)',
+        } }>
         {children}
-      </View>
-      {/* footer */}
-      <View 
-        col
-        itemsCenter
-        padding='1rem'
-        color='#000'>
-        <View col itemsCenter gap='0.5rem'>
-          <View row gap='0.5rem'>
+      </div>
+      <div 
+        style={ {
+          alignItems: 'center',
+          color: '#000000',
+          flexDirection: 'column',
+          padding: '1rem',
+        } }>
+        <div style={ {
+          alignItems: 'center',
+          flexDirection: 'column',
+          gap: '0.5rem',
+        } }>
+          <div style={ {
+            flexDirection: 'row',
+            gap: '0.5rem',
+          } }>
             {FOOTER_LINKS.map((link, i) => (
               <React.Fragment key={ link.label }>
                 <Link href={ link.href }>
@@ -146,59 +162,65 @@ const Layout = ({
                 )}
               </React.Fragment>
             ))}
-          </View>
+          </div>
           <Divider flexItem />
           <Typography>
-            Copyright &copy; 2024 Read Less LLC
+            Copyright &copy; 2025 Morgan Enterprise LLC
           </Typography>
-        </View>
-      </View>
-      {/* navigation */}
+        </div>
+      </div>
       <Drawer
         anchor='top'
         open={ drawerOpen }
         onClose={ () => setDrawerOpen(false) }>
-        <View 
-          col
-          maxWidth='1000px'
-          width='calc(100% - 2rem)'
-          px='1rem'
-          py='0.5rem'>
-          <View col>
-            <View col gap='0.5rem'>
-              <View>
+        <div 
+          style={ {
+            flexDirection: 'column',
+            gap: '0.5rem',
+            maxWidth: '1000px',
+            padding: '1rem 0.5rem',
+          } }>
+          <div style={ { flexDirection: 'column' } }>
+            <div style={ {
+              flexDirection: 'column',
+              gap: '0.5rem',
+            } }>
+              <div>
                 <Logo />
-              </View>
+              </div>
               {MENU_ITEMS.map((item) => (
-                <View 
+                <div 
                   key={ item.text } 
-                  color='#000'>
+                  style={ { color: '#000000' } }>
                   <Link href={ item.href } target={ item.target }>
-                    <View disabled={ item.disabled }>
-                      <View 
-                        row
-                        itemsCenter
-                        gap='0.5rem'>
+                    <div>
+                      <div 
+                        style={ {
+                          alignItems: 'center',
+                          flexDirection: 'column',
+                          gap: '0.5rem',
+                        } }>
                         <Icon 
                           path={ item.icon } 
                           size={ 1 } />
                         { item.text }
-                      </View>
-                    </View>
+                      </div>
+                    </div>
                   </Link>
-                </View>
+                </div>
               ))}
-            </View>
-            <View flexGrow={ 1 } />
-            <View>
+            </div>
+            <div style={ { flexGrow: 1 } } />
+            <div>
               <Typography variant='caption'>
-                &copy; 2024 Read Less LLC
+                &copy; 2025 Morgan Enterprise LLC
               </Typography>
-            </View>
-          </View>
-        </View>
-      </Drawer>
-    </View>
+            </div>
+          </div>
+        </div>
+      </Drawer>*/}
+      {children}
+    </div>
   );
 };
 
