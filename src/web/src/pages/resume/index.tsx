@@ -8,8 +8,10 @@ import {
   mdiGithub,
   mdiPhone,
   mdiPin,
+  mdiWeb,
 } from '@mdi/js';
-import { format } from 'date-fns';
+import { format, intervalToDuration } from 'date-fns';
+import pluralize from 'pluralize';
 import { usePDF } from 'react-to-pdf';
 import styled from 'styled-components';
 
@@ -73,7 +75,7 @@ const StyledSubheader = styled.div`
 const StyledSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
 `;
 
@@ -100,6 +102,8 @@ const WorkExperience = ({
   location,
   achievements,
 }: WorkExperienceProps) => {
+  const duration = intervalToDuration({ end: endDate ?? new Date(), start: startDate });
+  const timeInYears = `${duration.years} ${pluralize('year', duration.years)}${duration.months ? ` ${duration.months} ${pluralize('month', duration.months)}` : ''}`;
   return (
     <Section
       nested
@@ -109,7 +113,7 @@ const WorkExperience = ({
         {startDate != null && (
           <Anchor
             icon={ mdiCalendar }>
-            {`${format(startDate, 'MMM yyyy')} - ${endDate ? format(endDate, 'MMM yyyy') : 'present'}`}
+            {`${format(startDate, 'MMM yyyy')} - ${endDate ? format(endDate, 'MMM yyyy') : 'present'} (${timeInYears})`}
           </Anchor>
         )}
         {releaseDate != null && (
@@ -174,6 +178,20 @@ const Index = () => {
                 icon={ mdiGithub }
                 color='cyan'>
                 www.github.com/noodleofdeath
+              </Anchor>
+              <Anchor
+                href="https://noodleofdeath.com"
+                target="_blank"
+                icon={ mdiWeb }
+                color='cyan'>
+                www.noodleofdeath.com
+              </Anchor>
+              <Anchor
+                href="https://drunkmode.app"
+                target="_blank"
+                icon={ mdiBeer }
+                color='cyan'>
+                www.drunkmode.app
               </Anchor>
             </StyledHeaderContent>
           </StyledHeader>
@@ -247,8 +265,8 @@ const Index = () => {
                 achievements={ [
                   'Redesigned the React web application and react-native applications for Stretch leading to significantly fewer support requests from logistics customers.',
                   'Staged, tested, and deployed Mobile Device Management (MDM) for tablet devices improving security and ensuring $50M in deals with customers who labeled MDM as a dealbreaking requirement.',
-                  'Refactored unit, systems, simulations (Gazebo and MuJoCo), and end-to-end tests (Selenium/Playwright) and lead the migration from Jenkins to BuildKite for bare metal CI/CD pipelines.',
-                  'Rearchitected and fine tuned various perception AI models used by Spot and Atlas use for path expansion, object detection, and obstacle avoidance.',
+                  'Built and designed an automated test harness used for systems, simulations (Gazebo and MuJoCo), and end-to-end tests (Selenium/Playwright) both in Jenkins and BuildKite providing tangible code and test coverage metrics and hardening software before release.',
+                  'Rearchitected and fine tuned various perception AI models used by Spot and Atlas for path expansion, object detection, and obstacle avoidance.',
                 ] } />
               <WorkExperience
                 title="Senior Full Stack Engineer &amp; Data Scientist"
