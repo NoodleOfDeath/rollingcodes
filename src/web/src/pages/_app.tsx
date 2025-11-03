@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
@@ -15,7 +16,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="Thom Morgan projects and resume" />
         <meta
           key='og:title'
-          property="og:title" 
+          property="og:title"
           content="Rolling Codes" />
         <meta
           key='og:description'
@@ -33,69 +34,31 @@ function App({ Component, pageProps }: AppProps) {
           key='og:site_name'
           property="og:site_name"
           content="Rolling Codes" />
-        {/* <meta
-          key='twitter:title'
-          property="twitter:title" 
-          content="Rolling Codes" />
-        <meta
-          key='twitter:description'
-          property="twitter:description"
-          content="Thom Morgan projects and resume" />
-        <meta
-          key='twitter:image'
-          property="twitter:image"
-          content="/twitter-card.png" />
-        <meta
-          key='twitter:card'
-          content="summary" 
-          name="twitter:card" />
-        <meta
-          key='twitter:site'
-          name="twitter:site"
-          content="@rolling_codes" />
-        <meta
-          key='twitter:creator'
-          name="twitter:creator"
-          content="@rolling_codes" />
-        <meta
-          key='fb:app_id'
-          property="fb:app_id" 
-          content={ process.env.NEXT_PUBLIC_FACEBOOK_ID } /> */}
         <meta
           key='robots'
-          name="robots" 
+          name="robots"
           content="index, follow" />
         <meta
           key='viewport'
           name="viewport"
           content="width=device-width, initial-scale=1" />
-        <meta 
+        <meta
           key='msapplication-TileImage'
           name="msapplication-TileColor"
           content="#da532c" />
-        <meta 
+        <meta
           key='theme-color'
           name="theme-color"
-          content="#ffffff" />
-        <style>
-          {`
-            body {
-              margin: 0;
-              padding: 0;
-              background-color: #f5f5f5;
-            }
-            body, p {
-              font-family: OpenSans, -apple-system, "system-ui", BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            }
-          `}
-        </style>
-      </Head>        
-      {' '}
-      <ThemeProvider theme={ theme }>
-        <Layout>
-          <Component { ...pageProps } />
-        </Layout>
-      </ThemeProvider>
+          content="#0a0e27" />
+      </Head>
+      <MuiThemeProvider theme={ theme }>
+        <CssBaseline />
+        <ThemeProvider theme={ theme }>
+          <Layout>
+            <Component { ...pageProps } />
+          </Layout>
+        </ThemeProvider>
+      </MuiThemeProvider>
     </React.Fragment>
   );
 }

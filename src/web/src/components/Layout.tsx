@@ -1,226 +1,142 @@
 import React from 'react';
 
 import {
-  mdiEmail,
-  mdiFileDocument,
-  mdiMenu,
-  mdiShieldAccount,
+  mdiGithub,
+  mdiHome,
+  mdiNewspaper,
+  mdiStackOverflow,
 } from '@mdi/js';
 import { Icon } from '@mdi/react';
-import { 
+import {
   AppBar,
+  Box,
   Button,
+  Container,
   Divider,
-  Drawer,
+  IconButton,
+  Toolbar,
   Typography,
 } from '@mui/material';
-import { default as Link } from 'next/link';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 type LayoutProps = React.PropsWithChildren & {
   //
 };
 
-type MenuItem = {
-  href: string;
-  icon: string;
-  text: string;
-  target?: string;
-  disabled?: boolean;
-};
-
-const MENU_ITEMS: MenuItem[] = [
+const SOCIAL_LINKS = [
   {
-    href: '/terms',
-    icon: mdiFileDocument,
-    text: 'Terms & Conditions',
+    href: 'https://github.com/noodleofdeath',
+    icon: mdiGithub,
+    label: 'GitHub',
   },
   {
-    href: '/privacy',
-    icon: mdiShieldAccount,
-    text: 'Privacy Policy',
-  },
-  {
-    href: '/contact',
-    icon: mdiEmail,
-    text: 'Help',
+    href: 'https://stackoverflow.com/users/409958/rollingcodes',
+    icon: mdiStackOverflow,
+    label: 'Stack Overflow',
   },
 ];
 
-const FOOTER_LINKS = [
-  {
-    href: '/privacy',
-    label: 'Privacy Policy',
-  },
-  {
-    href: '/terms',
-    label: 'Terms & Conditions',
-  },
-];
-
-const Logo = () => {
-  return (
-    <Link 
-      style={ { 
-        alignItems: 'center',
-        flexDirection: 'row',
-        fontSize: '1.5rem',
-        gap: '0.5rem',
-        height: 10,
-      } }
-      href='/'>
-      Rolling Codes
-    </Link>
-  );
-};
-
-const Layout = ({ 
+const Layout = ({
   children,
   ...props
 }: LayoutProps) => {
-  
-  const router = useRouter();
-
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
-
-  // Dismiss navigation when route changes
-  React.useEffect(() => {
-    const handleRouteChange = () => {
-      setDrawerOpen(false);
-    };
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, [router.events]);
-  
   return (
-    <div
-      style={ {
-        alignItems: 'center',
+    <Box
+      sx={ {
+        display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
       } }
       { ...props }>
-      {/*<AppBar color='secondary' position='sticky'>
-        <div
-          style={ {
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: '1000px',
-            padding: '1rem 0.5rem',
-            width: 'calc(100% - 2rem)',
-          } }>
-          <Logo />
-          <div style={ { flexGrow: 1 } } />
-          <Button
-            color='inherit'
-            onClick={ () => setDrawerOpen(true) }>
-            <Icon path={ mdiMenu } size={ 1 } />
-          </Button>
-        </div>
+      <AppBar position="sticky" sx={ { bgcolor: 'background.paper' } }>
+        <Container maxWidth="lg">
+          <Toolbar sx={ { gap: 2 } }>
+            <Typography
+              variant="h6"
+              component={ Link }
+              href="/"
+              sx={ {
+                color: 'primary.main',
+                flexGrow: 1,
+                fontWeight: 700,
+                textDecoration: 'none',
+              } }>
+              Rolling Codes
+            </Typography>
+            <Button
+              component={ Link }
+              href="/"
+              startIcon={ <Icon path={ mdiHome } size={ 0.8 } /> }
+              sx={ { color: 'text.primary' } }>
+              Home
+            </Button>
+            <Button
+              component={ Link }
+              href="/read"
+              startIcon={ <Icon path={ mdiNewspaper } size={ 0.8 } /> }
+              sx={ { color: 'text.primary' } }>
+              Articles
+            </Button>
+          </Toolbar>
+        </Container>
       </AppBar>
-      <div
-        style={ {
-          flexDirection: 'column',
-          flexGrow: 1,
-          maxWidth: '1000px',
-          overflow: 'hidden',
-          padding: '1rem',
-          width: 'calc(100% - 2rem)',
-        } }>
+
+      <Box sx={ { flexGrow: 1 } }>
         {children}
-      </div>
-      <div 
-        style={ {
-          alignItems: 'center',
-          color: '#000000',
-          flexDirection: 'column',
-          padding: '1rem',
+      </Box>
+
+      <Box
+        component="footer"
+        sx={ {
+          bgcolor: 'background.paper',
+          borderTop: '1px solid rgba(0, 217, 255, 0.2)',
+          mt: 'auto',
+          py: 4,
         } }>
-        <div style={ {
-          alignItems: 'center',
-          flexDirection: 'column',
-          gap: '0.5rem',
-        } }>
-          <div style={ {
-            flexDirection: 'row',
-            gap: '0.5rem',
-          } }>
-            {FOOTER_LINKS.map((link, i) => (
-              <React.Fragment key={ link.label }>
-                <Link href={ link.href }>
-                  {link.label}
-                </Link>
-                {i + 1 < FOOTER_LINKS.length && (
-                  <Divider 
-                    flexItem
-                    orientation='vertical' />
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-          <Divider flexItem />
-          <Typography>
-            Copyright &copy; 2025 Morgan Enterprise LLC
-          </Typography>
-        </div>
-      </div>
-      <Drawer
-        anchor='top'
-        open={ drawerOpen }
-        onClose={ () => setDrawerOpen(false) }>
-        <div 
-          style={ {
-            flexDirection: 'column',
-            gap: '0.5rem',
-            maxWidth: '1000px',
-            padding: '1rem 0.5rem',
-          } }>
-          <div style={ { flexDirection: 'column' } }>
-            <div style={ {
-              flexDirection: 'column',
-              gap: '0.5rem',
+        <Container maxWidth="lg">
+          <Box
+            sx={ {
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: { md: 'row', xs: 'column' },
+              gap: 3,
+              justifyContent: 'space-between',
             } }>
-              <div>
-                <Logo />
-              </div>
-              {MENU_ITEMS.map((item) => (
-                <div 
-                  key={ item.text } 
-                  style={ { color: '#000000' } }>
-                  <Link href={ item.href } target={ item.target }>
-                    <div>
-                      <div 
-                        style={ {
-                          alignItems: 'center',
-                          flexDirection: 'column',
-                          gap: '0.5rem',
-                        } }>
-                        <Icon 
-                          path={ item.icon } 
-                          size={ 1 } />
-                        { item.text }
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <div style={ { flexGrow: 1 } } />
-            <div>
-              <Typography variant='caption'>
-                &copy; 2025 Morgan Enterprise LLC
+            <Box sx={ { textAlign: { md: 'left', xs: 'center' } } }>
+              <Typography variant="body2" color="text.secondary">
+                &copy; 2025 Read Less LLC. All rights reserved.
               </Typography>
-            </div>
-          </div>
-        </div>
-      </Drawer>*/}
-      {children}
-    </div>
+            </Box>
+
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={ { display: { md: 'block', xs: 'none' } } } />
+
+            <Box sx={ { display: 'flex', gap: 2 } }>
+              {SOCIAL_LINKS.map((link) => (
+                <IconButton
+                  key={ link.label }
+                  component="a"
+                  href={ link.href }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={ link.label }
+                  sx={ {
+                    '&:hover': {
+                      bgcolor: 'rgba(0, 217, 255, 0.1)',
+                      color: 'primary.main',
+                    },
+                    color: 'text.secondary',
+                  } }>
+                  <Icon path={ link.icon } size={ 1 } />
+                </IconButton>
+              ))}
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+    </Box>
   );
 };
 

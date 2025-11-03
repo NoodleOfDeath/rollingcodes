@@ -8,6 +8,8 @@ type AnchorProps = React.PropsWithChildren<{
   target?: string;
   icon?: string;
   color?: string;
+  underline?: boolean;
+  textDecoration?: string;
 }>;
 
 const StyledAnchor = styled.a<AnchorProps>`
@@ -16,20 +18,30 @@ const StyledAnchor = styled.a<AnchorProps>`
   gap: 0.5rem;
   align-items: center;
   color: ${({ color }) => color || 'black'};
-  text-decoration: none;
+  text-decoration: ${({ textDecoration }) => textDecoration || 'underline'};
 `;
 
 export const Anchor = ({
   href,
-  target,
+  target = '_blank',
   icon,
   color,
+  underline,
+  textDecoration = underline ? 'underline' : 'none',
   children,
 }: AnchorProps = {}) => {
   return (
-    <StyledAnchor href={ href } target={ target } color={ color }>
+    <StyledAnchor href={ href } target={ target } color={ color } textDecoration={ textDecoration }>
       {icon && <Icon path={ icon } title="Mail" size={ 1 } />}
       {children}
     </StyledAnchor>
   );
+};
+
+export const LinkAnchor = ({
+  color = 'blue',
+  underline = true,
+  ...props
+}: AnchorProps) => {
+  return <Anchor color={ color } underline={ underline } { ...props } />;
 };
