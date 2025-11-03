@@ -1,0 +1,84 @@
+import React from 'react';
+
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+} from '@mui/material';
+import type { GetStaticProps } from 'next';
+import Head from 'next/head';
+
+import type { Article } from '~/components';
+import { ArticleCard } from '~/components';
+import { getAllArticles } from '~/utils/articles';
+
+type ReadIndexProps = {
+  articles: Article[];
+};
+
+const ReadIndex = ({ articles }: ReadIndexProps) => {
+  return (
+    <React.Fragment>
+      <Head>
+        <title>Articles - Rolling Codes</title>
+        <meta name="description" content="Technical articles and insights by Thom Morgan" />
+      </Head>
+      <Box
+        sx={ {
+          bgcolor: 'background.default',
+          minHeight: '100vh',
+          py: 8,
+        } }>
+        <Container maxWidth="lg">
+          <Box sx={ { mb: 6 } }>
+            <Typography
+              variant="h2"
+              component="h1"
+              gutterBottom
+              sx={ {
+                color: 'primary.main',
+                fontWeight: 700,
+                mb: 2,
+              } }>
+              Articles
+            </Typography>
+            <Typography variant="h6" color="text.secondary">
+              Technical insights, analysis, and thoughts on software engineering and AI
+            </Typography>
+          </Box>
+
+          <Grid container spacing={ 3 }>
+            {articles.map((article) => (
+              <Grid item xs={ 12 } key={ article.slug }>
+                <ArticleCard article={ article } />
+              </Grid>
+            ))}
+          </Grid>
+
+          {articles.length === 0 && (
+            <Box sx={ { py: 8, textAlign: 'center' } }>
+              <Typography variant="h5" color="text.secondary">
+                No articles yet. Check back soon!
+              </Typography>
+            </Box>
+          )}
+        </Container>
+      </Box>
+    </React.Fragment>
+  );
+};
+
+export const getStaticProps: GetStaticProps<ReadIndexProps> = async () => {
+  const articles = getAllArticles();
+  return {
+    props: {
+      articles: articles.map((article) => ({
+        ...article,
+        date: article.date.toISOString(),
+      })) as any,
+    },
+  };
+};
+
+export default ReadIndex;
