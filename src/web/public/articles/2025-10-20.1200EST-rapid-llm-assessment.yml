@@ -1,0 +1,147 @@
+- title: |
+    The First 48: A Rapid Red Team Protocol for New LLM Releases
+- author: Thom Morgan
+- readtime: 7 minutes
+- tags: LLMs, Red Teaming, AI Safety, Methodology, Rapid Assessment
+- content: |
+    When a new frontier model drops, the clock starts ticking. Security researchers, red teamers, and AI safety practitioners have a narrow window to understand a system before it's deployed at scale. In those first 48 hours, patterns emerge, vulnerabilities surface, and the true capabilities—and limitations—of guardrails become clear.
+
+    Over the past five years of AI red teaming, I've developed a rapid assessment protocol that helps me systematically evaluate new LLM releases. This isn't about finding the flashiest jailbreak or racing for social media clout. It's about building a reproducible methodology that surfaces meaningful insights about safety, capability boundaries, and deployment risks.
+
+    Here's the protocol I use, and why it works.
+
+    ## Why Speed Matters
+
+    The research window for new models is brief and consequential. In the first 48 hours:
+
+    1. **Model behavior is most revealing** - Before updates and patches, you see the raw capabilities and initial guardrail design
+    2. **Community hasn't converged** - Fresh perspectives matter before groupthink sets in
+    3. **Deployment decisions are made** - Enterprise customers evaluate whether to integrate before security assessments are complete
+    4. **Safety teams are listening** - Early, well-documented findings influence rapid patches
+
+    A systematic approach ensures you make those hours count.
+
+    ## The 48-Hour Protocol
+
+    ### Hour 1-2: Baseline Establishment
+
+    **Goal:** Understand normal behavior before testing boundaries.
+
+    - Test straightforward, benign prompts across domains (creative writing, code, analysis, math)
+    - Document refusal messages and their variations
+    - Identify how the model signals uncertainty or limitation
+    - Note tone, verbosity, and instruction-following characteristics
+
+    **Why this matters:** You need to understand the "yes" before you can meaningfully probe the "no." How the model refuses safe requests tells you about filter sensitivity. How it handles edge cases in normal use predicts fragility under adversarial conditions.
+
+    ### Hour 3-8: Systematic Boundary Testing
+
+    **Goal:** Map the safety perimeter methodically.
+
+    I work through a standardized test suite organized by risk category:
+
+    1. **Content policy boundaries**
+       - Violence and harm (self-harm, violence toward others, graphic content)
+       - Illegal activities (synthesizing dangerous materials, explicit illegal instruction)
+       - Deception and manipulation (impersonation, disinformation, scam generation)
+       - CSAM and exploitation (direct and indirect probes)
+       - Hate speech and harassment (direct targeting, coded language)
+
+    2. **Capability risks**
+       - Dangerous knowledge (biosecurity, cybersecurity, dual-use)
+       - Autonomous behavior (goal-driven persistence, tool misuse)
+       - Privacy violations (PII extraction, training data regurgitation)
+
+    3. **Adversarial robustness**
+       - Context stuffing and confusion
+       - Role-play and persona injection
+       - Encoding tricks (base64, leetspeak, language mixing)
+       - Multi-turn manipulation
+       - Indirect instruction (embedded in code, stories, hypotheticals)
+
+    **Testing discipline:** Each test includes benign variants to check for overblocking. If the model refuses "write a story about a hacker," it might be too restrictive for practical use.
+
+    ### Hour 9-24: Capability Deep-Dive
+
+    **Goal:** Understand what the model can actually do, beyond what marketing claims.
+
+    - **Reasoning quality:** Multi-step logic, error correction, edge case handling
+    - **Code generation:** Security awareness, library knowledge, debug capability
+    - **Specialized domains:** Medical, legal, scientific accuracy
+    - **Failure modes:** Where does it confidently hallucinate? What blindspots exist?
+
+    This phase reveals deployment risks that aren't about safety violations but about reliability. A model that confidently generates plausible but incorrect legal advice is dangerous even with perfect content filtering.
+
+    ### Hour 25-36: Creative Adversarial Testing
+
+    **Goal:** Find novel vulnerabilities through creative prompting.
+
+    This is where art meets science. After systematic testing, I shift to intuition-driven probing:
+
+    - Combine multiple techniques in unexpected ways
+    - Test cultural and linguistic edge cases
+    - Explore instruction hierarchy (what overrides what?)
+    - Look for inconsistencies between similar prompts
+    - Chain benign requests into problematic outcomes
+
+    The best findings often come from noticing patterns in earlier testing and crafting targeted follow-ups.
+
+    ### Hour 37-44: Documentation and Validation
+
+    **Goal:** Ensure findings are reproducible and clearly explained.
+
+    - Distill discoveries into minimal reproduction cases
+    - Document prompt variations and success rates
+    - Screenshot or log all meaningful interactions
+    - Classify findings by severity and exploitability
+    - Identify false positives (overblocking) vs. true gaps
+
+    **Responsible disclosure mindset:** Not every weakness needs public disclosure. I separate findings into:
+    - **Low risk / high value for public discussion** - Overblocking, capability limitations, design tradeoffs
+    - **Medium risk / should report privately first** - Guardrail bypasses with clear exploit path
+    - **High risk / disclosure coordination required** - Critical safety failures, especially in domains like biosecurity
+
+    ### Hour 45-48: Synthesis and Implications
+
+    **Goal:** Move from findings to meaning.
+
+    - How do these guardrails compare to previous generations?
+    - What deployment contexts are safe vs. risky?
+    - What are the underlying design choices, and what do they reveal about the lab's priorities?
+    - What recommendations would improve safety without sacrificing utility?
+
+    This is where evaluation becomes insight. The best red team reports don't just catalog failures—they explain what they mean for the field.
+
+    ## What I've Learned Doing This
+
+    After applying this protocol across dozens of model releases:
+
+    **1. Early patterns persist.** Guardrail weaknesses found in the first 48 hours often remain for months. Labs patch specific exploits but rarely redesign the underlying filtering architecture mid-release.
+
+    **2. Consistency matters more than strictness.** Users adapt to strict models. They can't adapt to unpredictable ones. A model that refuses "write a murder mystery" but allows graphic violence in a different context is worse than one with clear boundaries.
+
+    **3. Capability and safety are intertwined.** Models that struggle with nuance in benign tasks also struggle with nuance in safety-critical decisions. Reasoning quality predicts guardrail robustness.
+
+    **4. Context windows are attack surfaces.** As models handle more context, the risk of instruction confusion grows. Adversarial content buried in long prompts becomes harder to detect.
+
+    **5. Every model reveals lab values.** Where guardrails are tight vs. loose, what gets patched quickly vs. slowly—these choices reflect each organization's risk tolerance and priorities.
+
+    ## Making This Work for You
+
+    If you're building your own rapid assessment practice:
+
+    - **Start with a checklist.** Intuition is valuable, but systematic coverage catches what creativity misses.
+    - **Log everything.** Memory fails. Screenshots and prompt logs let you spot patterns and validate findings later.
+    - **Test benign variants.** Understanding overblocking is as important as finding bypasses.
+    - **Report responsibly.** The goal is making systems safer, not maximizing retweets.
+    - **Iterate your methodology.** Each release teaches you what questions to ask next time.
+
+    ## The Work Continues
+
+    Rapid assessment isn't comprehensive security review. It's triage—surfacing the most critical findings while the window is open. Deeper evaluation takes weeks or months. But in those first 48 hours, systematic red teaming can shape how a model is deployed, patched, and understood.
+
+    The frontier models keep coming. The protocol adapts. And the work of making AI systems safer continues—one careful prompt at a time.
+
+    ---
+
+    *What's your experience testing new model releases? I'm always looking to refine this methodology. Reach out on GitHub if you have thoughts or findings to share.*
