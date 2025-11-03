@@ -30,7 +30,9 @@ export const ResumeDataEditor = ({
   onClose,
   open,
 }: ResumeDataEditorProps) => {
-  const { config, updateData, resetToDefault } = useResumeContext();
+  const {
+    config, updateData, resetToDefault,
+  } = useResumeContext();
   const [localData, setLocalData] = useState<ResumeData>(config.data);
 
   // Sync local data with context when dialog opens
@@ -176,7 +178,9 @@ export const ResumeDataEditor = ({
 
         {/* Contact Information */}
         <Accordion defaultExpanded>
-          <AccordionSummary expandIcon={ <ExpandMoreIcon /> } expandIconPosition="start">
+          <AccordionSummary
+            expandIcon={ <ExpandMoreIcon /> }
+            sx={ { '& .MuiAccordionSummary-expandIconWrapper': { mr: 1 }, flexDirection: 'row-reverse' } }>
             <Typography variant="h6">Contact Info</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -219,7 +223,9 @@ export const ResumeDataEditor = ({
 
         {/* Summary */}
         <Accordion>
-          <AccordionSummary expandIcon={ <ExpandMoreIcon /> } expandIconPosition="start">
+          <AccordionSummary
+            expandIcon={ <ExpandMoreIcon /> }
+            sx={ { '& .MuiAccordionSummary-expandIconWrapper': { mr: 1 }, flexDirection: 'row-reverse' } }>
             <Typography variant="h6">Summary</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -234,7 +240,9 @@ export const ResumeDataEditor = ({
 
         {/* Work Experience */}
         <Accordion>
-          <AccordionSummary expandIcon={ <ExpandMoreIcon /> } expandIconPosition="start">
+          <AccordionSummary
+            expandIcon={ <ExpandMoreIcon /> }
+            sx={ { '& .MuiAccordionSummary-expandIconWrapper': { mr: 1 }, flexDirection: 'row-reverse' } }>
             <Box sx={ {
               alignItems: 'center', display: 'flex', justifyContent: 'space-between', width: '100%',
             } }>
@@ -365,7 +373,9 @@ export const ResumeDataEditor = ({
 
         {/* Skills */}
         <Accordion>
-          <AccordionSummary expandIcon={ <ExpandMoreIcon /> } expandIconPosition="start">
+          <AccordionSummary
+            expandIcon={ <ExpandMoreIcon /> }
+            sx={ { '& .MuiAccordionSummary-expandIconWrapper': { mr: 1 }, flexDirection: 'row-reverse' } }>
             <Box sx={ {
               alignItems: 'center', display: 'flex', justifyContent: 'space-between', width: '100%',
             } }>
@@ -457,7 +467,9 @@ export const ResumeDataEditor = ({
 
         {/* Education */}
         <Accordion>
-          <AccordionSummary expandIcon={ <ExpandMoreIcon /> } expandIconPosition="start">
+          <AccordionSummary
+            expandIcon={ <ExpandMoreIcon /> }
+            sx={ { '& .MuiAccordionSummary-expandIconWrapper': { mr: 1 }, flexDirection: 'row-reverse' } }>
             <Typography variant="h6">Education</Typography>
           </AccordionSummary>
           <AccordionDetails>
