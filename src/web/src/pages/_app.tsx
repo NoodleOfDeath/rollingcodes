@@ -86,6 +86,7 @@ function App({ Component, pageProps }: AppProps) {
             }
             body, p {
               font-family: OpenSans, -apple-system, "system-ui", BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+              line-height: 1.2;
             }
           `}
         </style>
