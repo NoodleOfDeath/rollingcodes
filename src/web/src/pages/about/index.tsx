@@ -152,14 +152,15 @@ const About: NextPage = () => {
                     <Box>
                       <Typography variant="h6" gutterBottom>
                         <DrunkModeIcon sx={ {
-                          fontSize: 20, mr: 1, verticalAlign: 'middle', 
+                          fontSize: 20, mr: 1, verticalAlign: 'middle',
                         } } />
                         Drunk Mode
                       </Typography>
                       <Typography variant="body2" color="text.secondary" paragraph>
                         Creator of the Drunk Mode app - an iOS application that helps users prevent
                         themselves from drunk texting or using other apps irresponsibly. The app
-                        features Screen Time API integration and puzzle-based deactivation.
+                        features Screen Time API integration and puzzle-based deactivation. For project
+                        inquiries, there&apos;s a direct contact method at the drunkmode.app domain.
                       </Typography>
                       <Button
                         component="a"
@@ -218,11 +219,19 @@ const About: NextPage = () => {
                   </Typography>
                   <Typography variant="body1" paragraph color="text.secondary">
                     When I&apos;m not breaking AI systems or building software, you can find me hanging out
-                    with my dog 
+                    with my dog
                     {' '}
-                    <strong>Houdini</strong>
+                    <Typography
+                      component="span"
+                      sx={ {
+                        color: 'primary.main',
+                        fontWeight: 700,
+                      } }>
+                      Houdini
+                    </Typography>
                     , an adorable Pomsky (Pomeranian-Husky mix)
-                    who has his own Instagram following!
+                    who has his own Instagram following! He&apos;s basically my co-pilot for all things
+                    development and security research.
                   </Typography>
                   <Button
                     component="a"

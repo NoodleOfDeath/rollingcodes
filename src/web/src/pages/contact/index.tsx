@@ -16,8 +16,6 @@ import {
   Typography,
 } from '@mui/material';
 
-import { Layout } from '~/components/Layout';
-
 const ContactPage = () => {
   const contactMethods = [
     {
@@ -47,8 +45,7 @@ const ContactPage = () => {
   ];
 
   return (
-    <Layout>
-      <Container maxWidth="lg" sx={ { py: 8 } }>
+    <Container maxWidth="lg" sx={ { py: 8 } }>
         <Box sx={ { mb: 6, textAlign: 'center' } }>
           <Typography
             variant="h2"
@@ -120,6 +117,7 @@ const ContactPage = () => {
             bgcolor: 'rgba(0, 217, 255, 0.05)',
             border: '1px solid rgba(0, 217, 255, 0.2)',
             borderRadius: 2,
+            mb: 4,
           } }>
           <CardContent sx={ { p: 4 } }>
             <Typography variant="h5" gutterBottom sx={ { color: 'primary.main', fontWeight: 600 } }>
@@ -136,8 +134,28 @@ const ContactPage = () => {
             </Typography>
           </CardContent>
         </Card>
+
+        <Card
+          sx={ {
+            bgcolor: 'rgba(255, 152, 0, 0.05)',
+            border: '1px solid rgba(255, 152, 0, 0.3)',
+            borderRadius: 2,
+          } }>
+          <CardContent sx={ { p: 4 } }>
+            <Typography variant="h5" gutterBottom sx={ { color: 'warning.main', fontWeight: 600 } }>
+              For Those Who Do Their Homework
+            </Typography>
+            <Typography variant="body1" color="text.secondary" paragraph>
+              Standard channels above work fine. But if you&apos;ve actually explored this site and
+              want to bypass the noise, there&apos;s a more direct line. Those who follow my work
+              closely will know how to reach me.
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={ { fontStyle: 'italic' } }>
+              Hint: The details are scattered throughout the site. Pay attention.
+            </Typography>
+          </CardContent>
+        </Card>
       </Container>
-    </Layout>
   );
 };
 

@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import { GetStaticProps } from 'next';
 
-import { Layout } from '~/components/Layout';
 import { NewsCard } from '~/components/News/NewsCard';
 import { getAINews, RSSNewsItem } from '~/utils/rss';
 
@@ -40,7 +39,8 @@ const SourceCodeSection = () => {
         </Box>
         <Typography variant="body1" color="text.secondary" paragraph>
           This Tech News page aggregates RSS feeds from leading technology publications. Want to
-          see how it works? Check out the source code:
+          see how it works? Check out the source code. For those who dig deeper, there might be
+          other interesting discoveries throughout the site.
         </Typography>
         <Grid container spacing={ 2 }>
           <Grid item xs={ 12 } sm={ 6 } md={ 4 }>
@@ -99,8 +99,7 @@ const SourceCodeSection = () => {
 
 const TechNewsPage: React.FC<TechNewsPageProps> = ({ news }) => {
   return (
-    <Layout>
-      <Container maxWidth="lg" sx={ { py: 8 } }>
+    <Container maxWidth="lg" sx={ { py: 8 } }>
         <Box sx={ { mb: 6, textAlign: 'center' } }>
           <Typography
             variant="h2"
@@ -135,7 +134,6 @@ const TechNewsPage: React.FC<TechNewsPageProps> = ({ news }) => {
           </Box>
         )}
       </Container>
-    </Layout>
   );
 };
 

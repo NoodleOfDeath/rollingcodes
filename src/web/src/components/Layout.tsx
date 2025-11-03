@@ -241,6 +241,8 @@ const Layout = ({
                     return (
                       <React.Fragment key={ link.label }>
                         <Button
+                          component={ Link }
+                          href={ link.subItems[0].href }
                           onMouseEnter={ handleAboutMenuOpen }
                           startIcon={ <Icon path={ link.icon } size={ 0.8 } /> }
                           endIcon={ <ExpandMore /> }
