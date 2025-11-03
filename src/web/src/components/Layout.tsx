@@ -5,6 +5,9 @@ import {
   mdiHome,
   mdiNewspaper,
   mdiStackOverflow,
+  mdiAccountCircle,
+  mdiFileDocument,
+  mdiMenu,
 } from '@mdi/js';
 import { Icon } from '@mdi/react';
 import {
@@ -13,9 +16,17 @@ import {
   Button,
   Container,
   Divider,
+  Drawer,
   IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Toolbar,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import Link from 'next/link';
 
@@ -36,10 +47,80 @@ const SOCIAL_LINKS = [
   },
 ];
 
+const NAV_LINKS = [
+  {
+    href: '/',
+    icon: mdiHome,
+    label: 'Home',
+  },
+  {
+    href: '/read',
+    icon: mdiNewspaper,
+    label: 'Articles',
+  },
+  {
+    href: '/about',
+    icon: mdiAccountCircle,
+    label: 'About',
+  },
+  {
+    href: '/resume',
+    icon: mdiFileDocument,
+    label: 'Resume',
+  },
+];
+
 const Layout = ({
   children,
   ...props
 }: LayoutProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' ||
+        (event as React.KeyboardEvent).key === 'Shift')
+    ) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const drawerContent = (
+    <Box
+      sx={ { width: 250 } }
+      role="presentation"
+      onClick={ toggleDrawer(false) }
+      onKeyDown={ toggleDrawer(false) }>
+      <Box sx={ { p: 2 } }>
+        <Typography
+          variant="h6"
+          sx={ {
+            color: 'primary.main',
+            fontWeight: 700,
+          } }>
+          Rolling Codes
+        </Typography>
+      </Box>
+      <Divider />
+      <List>
+        {NAV_LINKS.map((link) => (
+          <ListItem key={ link.label } disablePadding>
+            <ListItemButton component={ Link } href={ link.href }>
+              <ListItemIcon>
+                <Icon path={ link.icon } size={ 1 } color={ theme.palette.text.primary } />
+              </ListItemIcon>
+              <ListItemText primary={ link.label } />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
     <Box
       sx={ {
@@ -51,6 +132,16 @@ const Layout = ({
       <AppBar position="sticky" sx={ { bgcolor: 'background.paper' } }>
         <Container maxWidth="lg">
           <Toolbar sx={ { gap: 2 } }>
+            {isMobile && (
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={ toggleDrawer(true) }
+                sx={ { color: 'text.primary', mr: 1 } }>
+                <Icon path={ mdiMenu } size={ 1 } />
+              </IconButton>
+            )}
             <Typography
               variant="h6"
               component={ Link }
@@ -63,23 +154,30 @@ const Layout = ({
               } }>
               Rolling Codes
             </Typography>
-            <Button
-              component={ Link }
-              href="/"
-              startIcon={ <Icon path={ mdiHome } size={ 0.8 } /> }
-              sx={ { color: 'text.primary' } }>
-              Home
-            </Button>
-            <Button
-              component={ Link }
-              href="/read"
-              startIcon={ <Icon path={ mdiNewspaper } size={ 0.8 } /> }
-              sx={ { color: 'text.primary' } }>
-              Articles
-            </Button>
+            {!isMobile && (
+              <React.Fragment>
+                {NAV_LINKS.map((link) => (
+                  <Button
+                    key={ link.label }
+                    component={ Link }
+                    href={ link.href }
+                    startIcon={ <Icon path={ link.icon } size={ 0.8 } /> }
+                    sx={ { color: 'text.primary' } }>
+                    {link.label}
+                  </Button>
+                ))}
+              </React.Fragment>
+            )}
           </Toolbar>
         </Container>
       </AppBar>
+
+      <Drawer
+        anchor="left"
+        open={ drawerOpen }
+        onClose={ toggleDrawer(false) }>
+        {drawerContent}
+      </Drawer>
 
       <Box sx={ { flexGrow: 1 } }>
         {children}

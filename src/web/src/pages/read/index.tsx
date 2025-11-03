@@ -11,7 +11,7 @@ import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import type { Article } from '~/components';
-import { ArticleCard } from '~/components';
+import { About, ArticleCard } from '~/components';
 import { getAllArticles } from '~/utils/articles';
 
 type ReadIndexProps = {
@@ -65,11 +65,18 @@ const ReadIndex = ({ articles }: ReadIndexProps) => {
           </Box>
 
           <Grid container spacing={ 3 }>
-            {displayedArticles.map((article) => (
-              <Grid item xs={ 12 } key={ article.slug }>
-                <ArticleCard article={ article } />
+            <Grid item xs={ 12 } md={ 8 }>
+              <Grid container spacing={ 3 }>
+                {displayedArticles.map((article) => (
+                  <Grid item xs={ 12 } key={ article.slug }>
+                    <ArticleCard article={ article } />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
+            </Grid>
+            <Grid item xs={ 12 } md={ 4 }>
+              <About />
+            </Grid>
           </Grid>
 
           {articles.length === 0 && (
