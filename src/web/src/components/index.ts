@@ -1,3 +1,4 @@
+export * from './About';
 export * from './Article';
 export * from './common';
 export * from './Layout';
