@@ -36,7 +36,6 @@ const theme = createTheme({
     },
   },
   typography: {
-    body1: { lineHeight: 1.7 },
     fontFamily: [
       'OpenSans',
       '-apple-system',

@@ -10,13 +10,13 @@ export type SectionProps = React.PropsWithChildren<{
   nested?: boolean;
 }> & StackProps;
 
-const StyledSectionHeader = styled.div<SectionProps>`
-  font-size: ${({ nested }) => nested ? '1.25rem' : '1.5rem'};
+const StyledSectionHeader = styled.div<{ $nested?: boolean; }>`
+  font-size: ${({ $nested }) => $nested ? '1.25rem' : '1.5rem'};
   font-weight: bold;
-  text-transform: ${({ nested }) => nested ? 'none' : 'uppercase'};
+  text-transform: ${({ $nested }) => $nested ? 'none' : 'uppercase'};
 `;
 
-const StyledSectionSubheader = styled.div<SectionProps>`
+const StyledSectionSubheader = styled.div<{ $nested?: boolean; }>`
   font-size: 1rem;
   font-weight: bold;
   font-style: italic;
@@ -25,14 +25,14 @@ const StyledSectionSubheader = styled.div<SectionProps>`
 export const Section = ({
   header, 
   subheader,
-  nested = false,
+  nested,
   children,
   ...props
 }: SectionProps = {}) => {
   return (
     <Stack>
-      {header && <StyledSectionHeader nested={ nested }>{header}</StyledSectionHeader>}
-      {subheader && <StyledSectionSubheader nested={ nested }>{subheader}</StyledSectionSubheader>}
+      {header && <StyledSectionHeader $nested={ nested }>{header}</StyledSectionHeader>}
+      {subheader && <StyledSectionSubheader $nested={ nested }>{subheader}</StyledSectionSubheader>}
       {children && <Stack { ...props }>{children}</Stack>}
     </Stack>
   );

@@ -93,6 +93,20 @@ const ArticlePage = ({ article }: ArticlePageProps) => {
 
             <Divider sx={ { borderColor: 'rgba(0, 217, 255, 0.1)', my: 4 } } />
 
+            <Box
+              sx={ {
+                bgcolor: 'rgba(255, 152, 0, 0.05)',
+                border: '1px solid rgba(255, 152, 0, 0.2)',
+                borderRadius: 1,
+                mb: 3,
+                p: 2,
+              } }>
+              <Typography variant="body2" color="text.secondary">
+                Want to discuss this article? Standard contact info is available throughout the site.
+                Or, if you&apos;ve been paying attention, you might know a more direct route.
+              </Typography>
+            </Box>
+
             <Button
               component={ Link }
               href="/read"

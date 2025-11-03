@@ -9,10 +9,10 @@ export type StackProps = {
   children?: React.ReactNode;
 };
 
-const StyledStack = styled.div<StackProps>`
+const StyledStack = styled.div<{ $gap: string; $direction: 'column' | 'row'; }>`
   display: flex;
-  flex-direction: ${({ direction }) => direction};
-  gap: ${({ gap }) => gap};
+  flex-direction: ${({ $direction }) => $direction};
+  gap: ${({ $gap }) => $gap};
 `;
 
 export const Stack = ({
@@ -22,7 +22,7 @@ export const Stack = ({
   children, 
 }: StackProps) => {
   return (
-    <StyledStack direction={ direction } gap={ gap }>
+    <StyledStack $direction={ direction } $gap={ gap }>
       {children}
     </StyledStack>
   );

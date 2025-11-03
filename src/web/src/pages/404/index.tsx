@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { Box, Button, Container, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Typography,
+} from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -87,7 +92,7 @@ const Custom404: NextPage = () => {
             </Typography>
 
             <Typography variant="body1" color="text.secondary" sx={ { mb: 4 } }>
-              The page you're looking for doesn't exist, may have been moved, or is currently being debugged.
+              The page you&apos;re looking for doesn&apos;t exist, may have been moved, or is currently being debugged.
             </Typography>
 
             <Box sx={ { display: 'flex', gap: 2 } }>
@@ -117,7 +122,7 @@ const Custom404: NextPage = () => {
               variant="caption"
               color="text.secondary"
               sx={ { fontStyle: 'italic', mt: 4 } }>
-              "It's not a bug, it's an undocumented feature." - Every developer ever
+              &quot;It&apos;s not a bug, it&apos;s an undocumented feature.&quot; - Every developer ever
             </Typography>
           </Box>
         </Container>

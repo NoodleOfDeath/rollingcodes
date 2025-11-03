@@ -1,6 +1,14 @@
 import React from 'react';
 
 import {
+  LocalBar as DrunkModeIcon,
+  GitHub as GitHubIcon,
+  Instagram as InstagramIcon,
+  LinkedIn as LinkedInIcon,
+  Pets as PetsIcon,
+  Description as ResumeIcon,
+} from '@mui/icons-material';
+import {
   Box,
   Button,
   Card,
@@ -11,14 +19,6 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import {
-  GitHub as GitHubIcon,
-  Instagram as InstagramIcon,
-  LinkedIn as LinkedInIcon,
-  Description as ResumeIcon,
-  Pets as PetsIcon,
-  LocalBar as DrunkModeIcon,
-} from '@mui/icons-material';
 import Link from 'next/link';
 
 export const About = () => {
@@ -36,24 +36,31 @@ export const About = () => {
         <Divider sx={ { mb: 2 } } />
 
         <Typography variant="body2" color="text.secondary" paragraph>
-          Hi! I'm <strong>Thom Morgan</strong>, a Security-minded Full Stack and AI Systems Engineer with 12+ years of experience.
+          Hi! I&apos;m
+          {' '}
+          <strong>Thom Morgan</strong>
+          , a Red Team Operator and AI Systems Evaluator with 12+ years of experience in web application pentesting, hardware security, and secure full stack engineering.
         </Typography>
 
         <Typography variant="body2" color="text.secondary" paragraph>
-          Currently working at <strong>Boston Dynamics</strong> as an AI Systems Penetration Tester & Senior Secure Full Stack Engineer, where I design adversarial test harnesses for robotics and AI systems.
+          Currently working at
+          {' '}
+          <strong>Boston Dynamics</strong>
+          {' '}
+          as a Red Team Operator & AI Systems Evaluator, where I design adversarial test harnesses for robotics and AI systems, with specialization in transformer architecture analysis and prompt engineering exploitation.
         </Typography>
 
         <Stack spacing={ 1.5 } sx={ { mb: 2 } }>
           <Box>
             <Chip
-              icon={ <LinkedInIcon />}
+              icon={ <LinkedInIcon /> }
               label="OSCP Certified"
               size="small"
-              sx={ { mr: 1, mb: 1 } } />
+              sx={ { mb: 1, mr: 1 } } />
             <Chip
               label="AWS Certified"
               size="small"
-              sx={ { mr: 1, mb: 1 } } />
+              sx={ { mb: 1, mr: 1 } } />
             <Chip
               label="PSM I"
               size="small"

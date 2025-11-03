@@ -30,9 +30,18 @@ export const Anchor = ({
   textDecoration = underline ? 'underline' : 'none',
   children,
 }: AnchorProps = {}) => {
+  // Generate stable ID based on icon path to prevent hydration mismatch
+  const iconId = React.useMemo(() => {
+    if (!icon) {
+      return undefined;
+    }
+    // Create stable ID from icon path hash
+    return `icon-${icon.split('/').pop()?.replace(/[^a-zA-Z0-9]/g, '')}`;
+  }, [icon]);
+
   return (
     <StyledAnchor href={ href } target={ target } color={ color } textDecoration={ textDecoration }>
-      {icon && <Icon path={ icon } title="Mail" size={ 1 } />}
+      {icon && <Icon path={ icon } title="Mail" size={ 1 } id={ iconId } />}
       {children}
     </StyledAnchor>
   );

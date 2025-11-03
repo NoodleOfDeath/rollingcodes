@@ -1,39 +1,54 @@
 import React from 'react';
 
+import { Tooltip } from '@mui/material';
+import styled from 'styled-components';
+
 import { Section } from '~/components';
-import { Skills } from '~/data/resume';
+import { SkillCategory } from '~/data/resume';
+
+const StyledSkillItem = styled.span`
+  cursor: help;
+`;
+
+const StyledSkillsContainer = styled.div`
+  display: block;
+`;
 
 export type ResumeSkillsProps = {
-  skills: Skills;
+  skills: SkillCategory[];
 };
 
 export const ResumeSkills = ({ skills }: ResumeSkillsProps) => {
   return (
-    <Section header="Skills" gap="1.5rem">
-      <Section nested header="Methodologies">
-        {skills.methodologies.join('; ')};
-      </Section>
-      <Section nested header="Favorite Languages">
-        {skills.favoriteLanguages.join('; ')};
-      </Section>
-      <Section nested header="All Languages">
-        {skills.allLanguages.join('; ')};
-      </Section>
-      <Section nested header="Libraries, Frameworks, and Platforms">
-        {skills.librariesAndFrameworks.join('; ')};
-      </Section>
-      <Section nested header="CI/CD, DevOps, and Cloud">
-        {skills.ciCdDevOpsCloud.join('; ')};
-      </Section>
-      <Section nested header="Developer Tools">
-        {skills.developerTools.join('; ')};
-      </Section>
-      <Section nested header="Robotics Simulation">
-        {skills.roboticsSimulation.join('; ')};
-      </Section>
-      <Section nested header="Certifications">
-        {skills.certifications.join('; ')};
-      </Section>
+    <Section header="Skills">
+      {skills.map((category, index) => (
+        <Section key={ `${category.title}-${index}` } nested header={ category.title }>
+          <StyledSkillsContainer>
+            {category.items.map((skill, skillIndex) => (
+              <React.Fragment key={ `${skill.title}-${skillIndex}` }>
+                <Tooltip
+                  title={ skill.description }
+                  enterDelay={ 500 }
+                  enterNextDelay={ 500 }
+                  arrow
+                  placement="top"
+                  slotProps={ {
+                    tooltip: {
+                      sx: {
+                        bgcolor: 'rgba(0, 0, 0, 0.85)',
+                        fontSize: '0.75rem',
+                        maxWidth: 300,
+                      },
+                    },
+                  } }>
+                  <StyledSkillItem>{skill.title}</StyledSkillItem>
+                </Tooltip>
+                {skillIndex < category.items.length - 1 ? '; ' : ';'}
+              </React.Fragment>
+            ))}
+          </StyledSkillsContainer>
+        </Section>
+      ))}
     </Section>
   );
 };
