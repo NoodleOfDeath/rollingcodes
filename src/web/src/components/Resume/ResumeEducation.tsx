@@ -7,6 +7,7 @@ import { Education } from '~/data/resume';
 
 const StyledSubheader = styled.div`
   font-weight: bold;
+  line-height: 1.2;
 `;
 
 export type ResumeEducationProps = {
@@ -21,10 +22,12 @@ export const ResumeEducation = ({ education }: ResumeEducationProps) => {
         <Stack>
           <StyledSubheader>{education.degree}</StyledSubheader>
           <StyledSubheader>
-            Majors: {education.majors.join(' & ')}
+            {`Majors: ${education.majors.join(' & ')}`}
           </StyledSubheader>
           {education.minor && (
-            <StyledSubheader>Minor: {education.minor}</StyledSubheader>
+            <StyledSubheader>
+              {`Minor: ${education.minor}`}
+            </StyledSubheader>
           )}
         </Stack>
       ) } />

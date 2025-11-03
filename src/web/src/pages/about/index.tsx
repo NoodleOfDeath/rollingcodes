@@ -1,6 +1,17 @@
 import React from 'react';
 
 import {
+  Code as CodeIcon,
+  LocalBar as DrunkModeIcon,
+  GitHub as GitHubIcon,
+  Instagram as InstagramIcon,
+  LinkedIn as LinkedInIcon,
+  Pets as PetsIcon,
+  Description as ResumeIcon,
+  SmartToy as RobotIcon,
+  Security as SecurityIcon,
+} from '@mui/icons-material';
+import {
   Box,
   Button,
   Card,
@@ -13,17 +24,6 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import {
-  GitHub as GitHubIcon,
-  Instagram as InstagramIcon,
-  LinkedIn as LinkedInIcon,
-  Description as ResumeIcon,
-  Pets as PetsIcon,
-  LocalBar as DrunkModeIcon,
-  Security as SecurityIcon,
-  Code as CodeIcon,
-  SmartToy as RobotIcon,
-} from '@mui/icons-material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -69,15 +69,18 @@ const About: NextPage = () => {
               <Card sx={ { mb: 4 } }>
                 <CardContent>
                   <Typography variant="h5" gutterBottom sx={ { fontWeight: 600, mb: 2 } }>
-                    👋 Hi, I'm Thom
+                    👋 Hi, I&apos;m Thom
                   </Typography>
                   <Typography variant="body1" paragraph color="text.secondary">
-                    I'm a security-minded Full Stack and AI Systems Engineer with over 12 years of
+                    I&apos;m a security-minded Full Stack and AI Systems Engineer with over 12 years of
                     professional experience. I specialize in designing and automating adversarial
                     test harnesses for robotics, embedded systems, and LLM-integrated applications.
                   </Typography>
                   <Typography variant="body1" paragraph color="text.secondary">
-                    Currently, I work at <strong>Boston Dynamics</strong>, where I combine my
+                    Currently, I work at 
+                    {' '}
+                    <strong>Boston Dynamics</strong>
+                    , where I combine my
                     expertise in secure CI/CD pipelines, red teaming, and AI evaluation frameworks
                     to identify brittleness, drift, and catastrophic forgetting before deployment.
                   </Typography>
@@ -99,7 +102,9 @@ const About: NextPage = () => {
                   <Stack spacing={ 3 }>
                     <Box>
                       <Typography variant="h6" gutterBottom sx={ { fontWeight: 600 } }>
-                        <SecurityIcon sx={ { fontSize: 20, mr: 1, verticalAlign: 'middle' } } />
+                        <SecurityIcon sx={ {
+                          fontSize: 20, mr: 1, verticalAlign: 'middle', 
+                        } } />
                         AI Systems Security & Red Teaming
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
@@ -111,13 +116,15 @@ const About: NextPage = () => {
 
                     <Box>
                       <Typography variant="h6" gutterBottom sx={ { fontWeight: 600 } }>
-                        <CodeIcon sx={ { fontSize: 20, mr: 1, verticalAlign: 'middle' } } />
+                        <CodeIcon sx={ {
+                          fontSize: 20, mr: 1, verticalAlign: 'middle', 
+                        } } />
                         Full Stack Development
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         From React and TypeScript frontends to Python and Node.js backends, I build
                         end-to-end solutions with a focus on security, scalability, and performance.
-                        I've rearchitected web and mobile applications that serve thousands of users.
+                        I&apos;ve rearchitected web and mobile applications that serve thousands of users.
                       </Typography>
                     </Box>
 
@@ -127,7 +134,7 @@ const About: NextPage = () => {
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         I perform adversarial red teaming of robotic vision and navigation models,
-                        identifying potential failure modes in perception pipelines. I've rearchitected
+                        identifying potential failure modes in perception pipelines. I&apos;ve rearchitected
                         and fine-tuned perception AI models used by Spot and Atlas robots.
                       </Typography>
                     </Box>
@@ -144,7 +151,9 @@ const About: NextPage = () => {
                   <Stack spacing={ 3 }>
                     <Box>
                       <Typography variant="h6" gutterBottom>
-                        <DrunkModeIcon sx={ { fontSize: 20, mr: 1, verticalAlign: 'middle' } } />
+                        <DrunkModeIcon sx={ {
+                          fontSize: 20, mr: 1, verticalAlign: 'middle', 
+                        } } />
                         Drunk Mode
                       </Typography>
                       <Typography variant="body2" color="text.secondary" paragraph>
@@ -170,7 +179,7 @@ const About: NextPage = () => {
                         📱 React Native Libraries
                       </Typography>
                       <Typography variant="body2" color="text.secondary" paragraph>
-                        I've created and contributed to numerous open source React Native libraries,
+                        I&apos;ve created and contributed to numerous open source React Native libraries,
                         including react-native-screen-time-api which provides native iOS Screen Time
                         API integration for cross-platform applications.
                       </Typography>
@@ -208,8 +217,11 @@ const About: NextPage = () => {
                     🐾 Beyond Code
                   </Typography>
                   <Typography variant="body1" paragraph color="text.secondary">
-                    When I'm not breaking AI systems or building software, you can find me hanging out
-                    with my dog <strong>Houdini</strong>, an adorable Pomsky (Pomeranian-Husky mix)
+                    When I&apos;m not breaking AI systems or building software, you can find me hanging out
+                    with my dog 
+                    {' '}
+                    <strong>Houdini</strong>
+                    , an adorable Pomsky (Pomeranian-Husky mix)
                     who has his own Instagram following!
                   </Typography>
                   <Button

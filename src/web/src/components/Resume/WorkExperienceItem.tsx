@@ -9,9 +9,23 @@ import {
 } from '@mdi/js';
 import { format, intervalToDuration } from 'date-fns';
 import pluralize from 'pluralize';
+import styled from 'styled-components';
 
-import { Anchor, LinkAnchor, Section, Stack } from '~/components';
-import { Company, WorkExperience } from '~/data/resume';
+import {
+  Anchor,
+  LinkAnchor,
+  Section,
+  Stack,
+} from '~/components';
+import { WorkExperience } from '~/data/resume';
+
+const StyledList = styled.ul`
+  margin: 0;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+`;
 
 export type WorkExperienceItemProps = {
   experience: WorkExperience;
@@ -34,8 +48,8 @@ export const WorkExperienceItem = ({ experience }: WorkExperienceItemProps) => {
     : null;
   const timeInYears = duration
     ? `${duration.years} ${pluralize('yr', duration.years)}${
-        duration.months ? ` ${duration.months} ${pluralize('mth', duration.months)}` : ''
-      }`
+      duration.months ? ` ${duration.months} ${pluralize('mth', duration.months)}` : ''
+    }`
     : '';
 
   const companyNode = typeof company === 'string'
@@ -82,13 +96,13 @@ export const WorkExperienceItem = ({ experience }: WorkExperienceItemProps) => {
           </Anchor>
         )}
       </Stack>
-      <Stack gap="0.25rem">
+      <StyledList>
         {achievements.map((achievement, index) => (
           <li key={ index }>
             {achievement}
           </li>
         ))}
-      </Stack>
+      </StyledList>
     </Section>
   );
 };

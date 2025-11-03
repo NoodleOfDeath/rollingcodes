@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  mdiBeer,
   mdiEmail,
   mdiGithub,
   mdiPhone,
@@ -10,7 +9,7 @@ import {
 } from '@mdi/js';
 import styled from 'styled-components';
 
-import { Anchor, LinkAnchor, Stack } from '~/components';
+import { Anchor, LinkAnchor } from '~/components';
 import { ContactInfo } from '~/data/resume';
 
 const StyledHeader = styled.header`
@@ -20,6 +19,7 @@ const StyledHeader = styled.header`
   gap: 0.5rem;
   color: white;
   padding: 1rem;
+  line-height: 1.2;
 `;
 
 const StyledHeaderName = styled.div`
@@ -54,42 +54,39 @@ export const ResumeHeader = ({ contact }: ResumeHeaderProps) => {
           color='cyan'>
           {contact.email}
         </LinkAnchor>
-        <LinkAnchor
-          href={ `tel:${contact.phone.replace(/[^0-9]/g, '')}` }
-          target="_blank"
-          icon={ mdiPhone }
-          color='cyan'>
-          {contact.phone}
-        </LinkAnchor>
+        {typeof contact.phone === 'string' ? (
+          <LinkAnchor
+            href={ `tel:${contact.phone.replace(/[^0-9]/g, '')}` }
+            target="_blank"
+            icon={ mdiPhone }
+            color='cyan'>
+            {contact.phone}
+          </LinkAnchor>
+        ) : contact.phone}
         <Anchor icon={ mdiPin } color='white'>
           {contact.location}
         </Anchor>
         {contact.github && (
-          <LinkAnchor
-            href={ contact.github }
-            target="_blank"
-            icon={ mdiGithub }
-            color='cyan'>
-            {contact.github.replace('https://', '')}
-          </LinkAnchor>
+          typeof contact.github === 'string' ? (
+            <LinkAnchor
+              href={ contact.github }
+              target="_blank"
+              icon={ mdiGithub }
+              color='cyan'>
+              {contact.github.replace('https://', '')}
+            </LinkAnchor>
+          ) : contact.github
         )}
         {contact.website && (
-          <LinkAnchor
-            href={ contact.website }
-            target="_blank"
-            icon={ mdiWeb }
-            color='cyan'>
-            {contact.website.replace('https://', '')}
-          </LinkAnchor>
-        )}
-        {contact.drunkmode && (
-          <LinkAnchor
-            href={ contact.drunkmode }
-            target="_blank"
-            icon={ mdiBeer }
-            color='cyan'>
-            {contact.drunkmode.replace('https://', '')}
-          </LinkAnchor>
+          typeof contact.website === 'string' ? (
+            <LinkAnchor
+              href={ contact.website }
+              target="_blank"
+              icon={ mdiWeb }
+              color='cyan'>
+              {contact.website.replace('https://', '')}
+            </LinkAnchor>
+          ) : contact.website
         )}
       </StyledHeaderContent>
     </StyledHeader>

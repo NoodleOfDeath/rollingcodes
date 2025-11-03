@@ -1,19 +1,27 @@
 import React from 'react';
 
 import {
+  mdiAccountCircle,
+  mdiCodeJson,
+  mdiEmail,
+  mdiFileDocument,
   mdiGithub,
   mdiHome,
-  mdiNewspaper,
-  mdiStackOverflow,
-  mdiAccountCircle,
-  mdiFileDocument,
   mdiMenu,
+  mdiNewspaper,
+  mdiRss,
+  mdiStackOverflow,
 } from '@mdi/js';
 import { Icon } from '@mdi/react';
+import { ExpandMore } from '@mui/icons-material';
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   AppBar,
   Box,
   Button,
+  Collapse,
   Container,
   Divider,
   Drawer,
@@ -23,6 +31,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
   useMediaQuery,
@@ -54,19 +64,35 @@ const NAV_LINKS = [
     label: 'Home',
   },
   {
-    href: '/read',
-    icon: mdiNewspaper,
-    label: 'Articles',
+    href: '/tech-news',
+    icon: mdiRss,
+    label: 'Tech News',
   },
   {
-    href: '/about',
     icon: mdiAccountCircle,
     label: 'About',
+    subItems: [
+      {
+        href: '/about',
+        icon: mdiAccountCircle,
+        label: 'About Me',
+      },
+      {
+        href: '/resume',
+        icon: mdiFileDocument,
+        label: 'Resume',
+      },
+      {
+        href: '/read',
+        icon: mdiNewspaper,
+        label: 'My Articles',
+      },
+    ],
   },
   {
-    href: '/resume',
-    icon: mdiFileDocument,
-    label: 'Resume',
+    href: '/contact',
+    icon: mdiEmail,
+    label: 'Contact',
   },
 ];
 
@@ -77,6 +103,8 @@ const Layout = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [aboutMenuAnchor, setAboutMenuAnchor] = React.useState<null | HTMLElement>(null);
+  const [mobileAboutOpen, setMobileAboutOpen] = React.useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -89,12 +117,18 @@ const Layout = ({
     setDrawerOpen(open);
   };
 
+  const handleAboutMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAboutMenuAnchor(event.currentTarget);
+  };
+
+  const handleAboutMenuClose = () => {
+    setAboutMenuAnchor(null);
+  };
+
   const drawerContent = (
     <Box
       sx={ { width: 250 } }
-      role="presentation"
-      onClick={ toggleDrawer(false) }
-      onKeyDown={ toggleDrawer(false) }>
+      role="presentation">
       <Box sx={ { p: 2 } }>
         <Typography
           variant="h6"
@@ -107,16 +141,62 @@ const Layout = ({
       </Box>
       <Divider />
       <List>
-        {NAV_LINKS.map((link) => (
-          <ListItem key={ link.label } disablePadding>
-            <ListItemButton component={ Link } href={ link.href }>
-              <ListItemIcon>
-                <Icon path={ link.icon } size={ 1 } color={ theme.palette.text.primary } />
-              </ListItemIcon>
-              <ListItemText primary={ link.label } />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {NAV_LINKS.map((link) => {
+          if (link.subItems) {
+            return (
+              <Accordion
+                key={ link.label }
+                disableGutters
+                elevation={ 0 }
+                sx={ {
+                  '&:before': { display: 'none' },
+                  bgcolor: 'transparent',
+                } }>
+                <AccordionSummary
+                  expandIcon={ <ExpandMore /> }
+                  sx={ { px: 2 } }>
+                  <Box sx={ {
+                    alignItems: 'center', display: 'flex', gap: 2,
+                  } }>
+                    <Icon path={ link.icon } size={ 1 } color={ theme.palette.text.primary } />
+                    <Typography>{link.label}</Typography>
+                  </Box>
+                </AccordionSummary>
+                <AccordionDetails sx={ { p: 0 } }>
+                  <List>
+                    {link.subItems.map((subItem) => (
+                      <ListItem key={ subItem.label } disablePadding>
+                        <ListItemButton
+                          component={ Link }
+                          href={ subItem.href }
+                          onClick={ toggleDrawer(false) }
+                          sx={ { pl: 4 } }>
+                          <ListItemIcon>
+                            <Icon path={ subItem.icon } size={ 1 } color={ theme.palette.text.primary } />
+                          </ListItemIcon>
+                          <ListItemText primary={ subItem.label } />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </AccordionDetails>
+              </Accordion>
+            );
+          }
+          return (
+            <ListItem key={ link.label } disablePadding>
+              <ListItemButton
+                component={ Link }
+                href={ link.href! }
+                onClick={ toggleDrawer(false) }>
+                <ListItemIcon>
+                  <Icon path={ link.icon } size={ 1 } color={ theme.palette.text.primary } />
+                </ListItemIcon>
+                <ListItemText primary={ link.label } />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
@@ -156,16 +236,65 @@ const Layout = ({
             </Typography>
             {!isMobile && (
               <React.Fragment>
-                {NAV_LINKS.map((link) => (
-                  <Button
-                    key={ link.label }
-                    component={ Link }
-                    href={ link.href }
-                    startIcon={ <Icon path={ link.icon } size={ 0.8 } /> }
-                    sx={ { color: 'text.primary' } }>
-                    {link.label}
-                  </Button>
-                ))}
+                {NAV_LINKS.map((link) => {
+                  if (link.subItems) {
+                    return (
+                      <React.Fragment key={ link.label }>
+                        <Button
+                          onMouseEnter={ handleAboutMenuOpen }
+                          startIcon={ <Icon path={ link.icon } size={ 0.8 } /> }
+                          endIcon={ <ExpandMore /> }
+                          sx={ { color: 'text.primary' } }>
+                          {link.label}
+                        </Button>
+                        <Menu
+                          anchorEl={ aboutMenuAnchor }
+                          open={ Boolean(aboutMenuAnchor) }
+                          onClose={ handleAboutMenuClose }
+                          MenuListProps={ { onMouseLeave: handleAboutMenuClose } }
+                          sx={ { '& .MuiMenu-paper': { mt: 1 } } }>
+                          {link.subItems.map((subItem) => (
+                            <MenuItem
+                              key={ subItem.label }
+                              component={ Link }
+                              href={ subItem.href }
+                              onClick={ handleAboutMenuClose }>
+                              <ListItemIcon>
+                                <Icon path={ subItem.icon } size={ 0.8 } />
+                              </ListItemIcon>
+                              <ListItemText>{subItem.label}</ListItemText>
+                            </MenuItem>
+                          ))}
+                        </Menu>
+                      </React.Fragment>
+                    );
+                  }
+                  return (
+                    <Button
+                      key={ link.label }
+                      component={ Link }
+                      href={ link.href! }
+                      startIcon={ <Icon path={ link.icon } size={ 0.8 } /> }
+                      sx={ { color: 'text.primary' } }>
+                      {link.label}
+                    </Button>
+                  );
+                })}
+                <Divider orientation="vertical" flexItem sx={ { mx: 1 } } />
+                <Button
+                  component="a"
+                  href="https://github.com/noodleofdeath/rollingcodes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  startIcon={ <Icon path={ mdiCodeJson } size={ 0.8 } /> }
+                  variant="outlined"
+                  sx={ {
+                    '&:hover': { borderColor: 'primary.main' },
+                    borderColor: 'rgba(0, 217, 255, 0.3)',
+                    color: 'primary.main',
+                  } }>
+                  View Source Code
+                </Button>
               </React.Fragment>
             )}
           </Toolbar>
