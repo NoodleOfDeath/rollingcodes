@@ -4,6 +4,7 @@ import {
   Box,
   Container,
   Grid,
+  Pagination,
   Typography,
 } from '@mui/material';
 import type { GetStaticProps } from 'next';
@@ -17,7 +18,22 @@ type ReadIndexProps = {
   articles: Article[];
 };
 
+const ARTICLES_PER_PAGE = 10;
+
 const ReadIndex = ({ articles }: ReadIndexProps) => {
+  const [page, setPage] = React.useState(1);
+
+  const totalPages = Math.ceil(articles.length / ARTICLES_PER_PAGE);
+  const displayedArticles = articles.slice(
+    (page - 1) * ARTICLES_PER_PAGE,
+    page * ARTICLES_PER_PAGE
+  );
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+    window.scrollTo({ behavior: 'smooth', top: 0 });
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -49,7 +65,7 @@ const ReadIndex = ({ articles }: ReadIndexProps) => {
           </Box>
 
           <Grid container spacing={ 3 }>
-            {articles.map((article) => (
+            {displayedArticles.map((article) => (
               <Grid item xs={ 12 } key={ article.slug }>
                 <ArticleCard article={ article } />
               </Grid>
@@ -61,6 +77,22 @@ const ReadIndex = ({ articles }: ReadIndexProps) => {
               <Typography variant="h5" color="text.secondary">
                 No articles yet. Check back soon!
               </Typography>
+            </Box>
+          )}
+
+          {totalPages > 1 && (
+            <Box
+              sx={ {
+                display: 'flex',
+                justifyContent: 'center',
+                mt: 6,
+              } }>
+              <Pagination
+                count={ totalPages }
+                page={ page }
+                onChange={ handlePageChange }
+                color="primary"
+                size="large" />
             </Box>
           )}
         </Container>
