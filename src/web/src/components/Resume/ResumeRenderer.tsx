@@ -284,7 +284,7 @@ export const ResumeRenderer = ({ targetRef, presetStyleOverride }: ResumeRendere
       <StyledContentWrapper>
         {renderLayout()}
       </StyledContentWrapper>
-      {!isDownloading && pageIndicators.length > 0 && pageIndicators }
+      {/* {!isDownloading && pageIndicators.length > 0 && pageIndicators } */}
     </StyledContainer>
   );
 };
