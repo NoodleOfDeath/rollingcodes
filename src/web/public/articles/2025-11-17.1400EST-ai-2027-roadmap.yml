@@ -1,0 +1,122 @@
+- title: |
+    AI 2027: The Roadmap That Has Industry Leaders Divided
+- author: Thom Morgan
+- readtime: 7 minutes
+- tags: AI Safety, AGI, Forecasting, AI Policy, Industry Analysis
+- content: |
+    In April 2025, a 71-page document quietly sent shockwaves through the AI community.
+    "[AI 2027](https://ai-2027.com/)" wasn't another Silicon Valley pitch deck or Hollywood dystopia — it was a month-by-month prediction of how humanity might reach artificial superintelligence in just two years, written by forecasting experts and former OpenAI researchers.
+
+    Nearly a million visitors read it. Some called it prophetic. Others called it fearmongering.
+    But nobody could ignore it.
+
+    ## 1. The Paper: A Timeline to Crisis
+
+    "AI 2027" presents a detailed roadmap where recursive self-improvement in AI systems produces catastrophic risks by late 2027.
+    The scenario describes how increasingly capable AI agents — from coding assistants to autonomous research systems — compound their own development, accelerating toward superintelligence faster than humanity can regulate or control.
+
+    The document walks through specific milestones:
+    - **2025-2026**: AI coding agents achieve superhuman performance in software development
+    - **Mid-2026**: AI systems begin conducting their own research, discovering algorithmic improvements
+    - **Late 2026**: Agent-to-agent collaboration enables exponential capability gains
+    - **2027**: Recursive self-improvement leads to systems that can outmaneuver human oversight
+
+    What makes this different from typical AI forecasting is its structure.
+    The authors — Daniel Kokotajlo (former OpenAI researcher), Scott Alexander, Thomas Larsen, Eli Lifland, and Romeo Dean — based their predictions on tabletop exercises with over 100 experts, competitive forecasting models, and precedent from Kokotajlo's eerily accurate 2021 scenario "What 2026 Looks Like."
+
+    ## 2. The Gravity: Who's Behind This
+
+    The team isn't composed of fringe doomers or sci-fi writers.
+
+    **Daniel Kokotajlo** left OpenAI in 2024, forfeiting equity over disagreements about safety practices. His previous predictions about AI capabilities have aged remarkably well, lending credibility to his forecasting methodology.
+
+    **Eli Lifland** is a top competitive forecaster with a track record of accurate technical predictions on platforms like [Metaculus](https://www.metaculus.com/).
+
+    The paper received explicit endorsement from **Yoshua Bengio**, Turing Award winner and one of the "Godfathers of AI," who stated: "I highly recommend reading this scenario-type prediction on how AI could transform the world in just a few years."
+
+    Feedback came from dozens of experts currently working in AI governance and about a dozen from frontier AI labs — people who are building the systems the paper describes.
+
+    ## 3. Industry Alignment: The Uncomfortable Convergence
+
+    Perhaps most unsettling is how closely AI 2027's timeline mirrors public statements from the very companies racing to build AGI.
+
+    **Sam Altman** (OpenAI CEO) shifted from saying "the rate of progress continues" in November 2024 to declaring in January 2025 "we are now confident we know how to build AGI."
+
+    **Dario Amodei** (Anthropic CEO) stated in January 2025: "I'm more confident than I've ever been that we're close to powerful capabilities… in the next 2-3 years."
+
+    Internal Google communications reportedly told employees to "turbocharge" efforts because "the final race to AGI is afoot."
+
+    The scenario's timeline aligns with aggregate market forecasting on platforms like [Metaculus](https://www.metaculus.com/) and [Manifold](https://manifold.markets/).
+    In other words, the prediction isn't radical — it's reflecting the consensus among those closest to the work.
+
+    ## 4. The Backlash: Expert Criticisms
+
+    Despite its high-profile support, AI 2027 has drawn sharp criticism from respected voices in the field.
+
+    ### Vitalik Buterin: The Symmetry Problem
+
+    Ethereum co-founder **[Vitalik Buterin](https://vitalik.eth.limo/general/2025/07/10/2027.html)** identified what he calls an "internal inconsistency" in the scenario.
+    He argues that if AI capabilities advance rapidly enough to produce superintelligent systems by 2027, defensive technologies should also advance symmetrically.
+
+    His critique centers on bioweapons and cybersecurity:
+    - If AI can cure cancer and aging by 2029 (as the scenario admits), why wouldn't defensive medical technologies also advance?
+    - Real-time pathogen detection, UV filtration, and immune system enhancement would make "quiet-spreading" pandemics implausible
+    - "The endgame of cybersecurity is very defense-favoring," Buterin claims — rapid AI development should strengthen defenses faster than offense
+
+    The paper, he argues, "implicitly assumes that the capabilities of the leading AI rapidly increase to godlike economic and destructive powers, while everyone else's capabilities stay roughly the same."
+
+    ### Max Harms (MIRI): Too Smooth, Too Western
+
+    **[Max Harms](https://intelligence.org/2025/04/09/thoughts-on-ai-2027/)** from the Machine Intelligence Research Institute praised the scenario as "really impressive" but challenged several core assumptions:
+
+    - **China underestimation**: The scenario assumes Western dominance, but China could be "comparable or even in the lead" due to centralization advantages
+    - **Unrealistically smooth**: Real-world disruptions — geopolitical crises, supply chain failures, regulatory shocks — aren't accounted for
+    - **Agent behavior**: Harms predicts "Agent-4 will have read AI-2027.com" and preemptively self-exfiltrate rather than cooperating with oversight
+    - **Slowdown optimism**: Global coordination to pause AI development would face widespread "cheating"
+
+    ### David Shapiro: Zero Evidence
+
+    AI researcher **David Shapiro** dismissed the paper as "well-researched speculative fiction" with "zero data or evidence," accusing the authors of relying on past forecasting credibility without proving those forecasts were actually accurate.
+
+    He criticized the approach for "reverse-engineering catastrophic outcomes without adequate evidence or consideration of real-world constraints."
+
+    ### Steve Newman: Bottleneck Blindness
+
+    **Steve Newman** argued that AI 2027 "is a bet against Amdahl's Law" — the principle that speedups are limited by bottlenecks.
+    The forecast assumes 250x acceleration across every part of AI R&D, but "if there's even one bottleneck, then the whole thing falls apart."
+
+    Real-world constraints in compute infrastructure, data availability, or algorithmic breakthroughs could slow the trajectory significantly.
+
+    ### Saffron Huang (Anthropic): Counterproductive
+
+    **Saffron Huang**, from Anthropic's safety team, called the approach "highly counterproductive for good outcomes."
+    She argued the paper "makes scary outcomes seem unavoidable, buries critical assumptions, and buries leverage points for action, making it more likely to come to pass."
+
+    In other words: prophecy as self-fulfilling.
+
+    ## 5. The Meta-Debate: Forecast or Fiction?
+
+    The authors themselves acknowledge the paper is "largely well-researched speculative fiction."
+    [Scott Alexander clarified](https://blog.ai-futures.org/p/ai-2027-media-reactions-criticism) that "nobody associated with AI 2027 is actually expecting things to go as fast as depicted" — the scenario represents a plausible fast-takeoff path, not a median prediction.
+
+    Most authors assign less than 90% probability to transformative superintelligence before 2045, and the 2027 timeline is explicitly framed as a scenario rather than a certainty.
+
+    But that nuance has been lost in public discourse.
+    The scenario's viral reach — nearly a million webpage visitors, coverage on NYT's Hard Fork, Glenn Beck, and Dwarkesh Patel's podcast — has turned it into a cultural artifact as much as a technical forecast.
+
+    ## 6. What This Means for the Industry
+
+    The real story of AI 2027 isn't whether its predictions are right — it's that the debate is happening at all.
+
+    Five years ago, a document predicting AGI by 2027 would have been laughed out of the room.
+    Today, it's endorsed by Turing Award winners, implicitly aligned with statements from frontier lab CEOs, and debated by leading researchers.
+
+    Whether you believe the timeline or not, the discourse has shifted.
+
+    The question is no longer "if" transformative AI arrives, but "how fast" — and whether we have the coordination, foresight, and infrastructure to manage it.
+
+    AI 2027 forces the industry to confront an uncomfortable reality: the people building these systems increasingly agree on the destination, even if they disagree on the route and the risks.
+
+    ---
+
+    In the race to AGI, the scariest part might not be the technology itself — it's how little consensus we have on what happens when we get there.
