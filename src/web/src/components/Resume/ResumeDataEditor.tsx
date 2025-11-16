@@ -12,9 +12,12 @@ import {
   AccordionSummary,
   Box,
   Button,
+  Chip,
   Drawer,
   IconButton,
   TextField,
+  ToggleButton,
+  ToggleButtonGroup,
   Typography,
 } from '@mui/material';
 
@@ -31,7 +34,7 @@ export const ResumeDataEditor = ({
   open,
 }: ResumeDataEditorProps) => {
   const {
-    config, updateData, resetToDefault,
+    config, resumeVersion, setResumeVersion, updateData, resetToDefault,
   } = useResumeContext();
   const [localData, setLocalData] = useState<ResumeData>(config.data);
 
@@ -172,9 +175,64 @@ export const ResumeDataEditor = ({
             <CloseIcon />
           </IconButton>
         </Box>
-        <Typography variant="body2" color="text.secondary" sx={ { mb: 3 } }>
+        <Typography variant="body2" color="text.secondary" sx={ { mb: 2 } }>
           Customize the resume content. Changes update in real-time.
         </Typography>
+
+        {/* Resume Version Toggle */}
+        <Box sx={ {
+          border: '1px solid #e0e0e0',
+          borderRadius: 1,
+          mb: 3,
+          p: 2,
+        } }>
+          <Box sx={ {
+            alignItems: 'center', display: 'flex', gap: 2, mb: 1,
+          } }>
+            <Typography variant="subtitle1" fontWeight="bold">
+              Resume Version
+            </Typography>
+            <Chip
+              label={ resumeVersion === 'tech-lead' ? 'Leadership Focused' : 'IC Focused' }
+              color="primary"
+              size="small" />
+          </Box>
+          <Typography variant="body2" color="text.secondary" sx={ { mb: 2 } }>
+            Toggle between Technical Lead (leadership & management) and Individual Contributor (deep technical expertise) versions.
+          </Typography>
+          <ToggleButtonGroup
+            value={ resumeVersion }
+            exclusive
+            onChange={ (_, newVersion) => {
+              if (newVersion !== null) {
+                setResumeVersion(newVersion);
+              }
+            } }
+            fullWidth
+            color="primary"
+            size="small">
+            <ToggleButton value="tech-lead">
+              <Box sx={ { textAlign: 'left' } }>
+                <Typography variant="button" display="block">
+                  Technical Lead
+                </Typography>
+                <Typography variant="caption" display="block" sx={ { textTransform: 'none' } }>
+                  Leadership & Management
+                </Typography>
+              </Box>
+            </ToggleButton>
+            <ToggleButton value="ic">
+              <Box sx={ { textAlign: 'left' } }>
+                <Typography variant="button" display="block">
+                  Individual Contributor
+                </Typography>
+                <Typography variant="caption" display="block" sx={ { textTransform: 'none' } }>
+                  Deep Technical Expertise
+                </Typography>
+              </Box>
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
 
         {/* Contact Information */}
         <Accordion defaultExpanded>
