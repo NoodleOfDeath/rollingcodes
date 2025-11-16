@@ -1,0 +1,35 @@
+{
+  "name": "@rollingcodes/backend",
+  "version": "1.0.0",
+  "description": "Automated AI news article generation service with Express API",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "node --watch api/server.js",
+    "generate": "node workers/article-generator.js",
+    "migrate": "node db/migrate.js"
+  },
+  "keywords": [
+    "ai",
+    "rss",
+    "automation",
+    "article-generation",
+    "express",
+    "postgresql"
+  ],
+  "author": "Thom Morgan",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "pg": "^8.11.3",
+    "rss-parser": "^3.13.0",
+    "js-yaml": "^4.1.0",
+    "axios": "^1.7.7"
+  },
+  "optionalDependencies": {
+    "@aws-sdk/client-s3": "^3.490.0"
+  }
+}

@@ -7,16 +7,23 @@ import React, {
 
 import { defaultPreset } from '~/components/Resume/presets';
 import { ResumeConfig } from '~/components/Resume/types';
-import { resumeData } from '~/data/resume';
+import {
+  ResumeVersion,
+  getResumeData,
+  resumeData,
+} from '~/data/resume';
 
 const RESUME_DATA_STORAGE_KEY = 'resumeData';
+const RESUME_VERSION_STORAGE_KEY = 'resumeVersion';
 
 export type ResumeContextType = {
   config: ResumeConfig;
   isDownloading: boolean;
   resetToDefault: () => void;
+  resumeVersion: ResumeVersion;
   setConfig: (config: ResumeConfig) => void;
   setIsDownloading: (isDownloading: boolean) => void;
+  setResumeVersion: (version: ResumeVersion) => void;
   updateConfig: (updates: Partial<ResumeConfig>) => void;
   updateData: (data: typeof resumeData) => void;
 };
@@ -45,7 +52,30 @@ const saveResumeData = (data: typeof resumeData) => {
   }
 };
 
+// Load resume version from localStorage or use default
+const loadResumeVersion = (): ResumeVersion => {
+  try {
+    const stored = localStorage.getItem(RESUME_VERSION_STORAGE_KEY);
+    if (stored && (stored === 'tech-lead' || stored === 'ic')) {
+      return stored as ResumeVersion;
+    }
+  } catch (error) {
+    console.error('Failed to load resume version from localStorage:', error);
+  }
+  return 'tech-lead';
+};
+
+// Save resume version to localStorage
+const saveResumeVersion = (version: ResumeVersion) => {
+  try {
+    localStorage.setItem(RESUME_VERSION_STORAGE_KEY, version);
+  } catch (error) {
+    console.error('Failed to save resume version to localStorage:', error);
+  }
+};
+
 export const ResumeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [resumeVersion, setResumeVersionState] = useState<ResumeVersion>(loadResumeVersion());
   const [config, setConfig] = useState<ResumeConfig>({
     data: loadResumeData(),
     preset: defaultPreset,
@@ -58,6 +88,18 @@ export const ResumeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     saveResumeData(config.data);
   }, [config.data]);
 
+  // Save version to localStorage whenever it changes
+  useEffect(() => {
+    saveResumeVersion(resumeVersion);
+  }, [resumeVersion]);
+
+  const setResumeVersion = (version: ResumeVersion) => {
+    setResumeVersionState(version);
+    // Update config data to match the new version
+    const newData = getResumeData(version);
+    setConfig((prev) => ({ ...prev, data: newData }));
+  };
+
   const updateConfig = (updates: Partial<ResumeConfig>) => {
     setConfig((prev) => ({ ...prev, ...updates }));
   };
@@ -67,7 +109,8 @@ export const ResumeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   };
 
   const resetToDefault = () => {
-    setConfig((prev) => ({ ...prev, data: resumeData }));
+    const defaultData = getResumeData(resumeVersion);
+    setConfig((prev) => ({ ...prev, data: defaultData }));
     localStorage.removeItem(RESUME_DATA_STORAGE_KEY);
   };
 
@@ -75,8 +118,10 @@ export const ResumeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     config,
     isDownloading,
     resetToDefault,
+    resumeVersion,
     setConfig,
     setIsDownloading,
+    setResumeVersion,
     updateConfig,
     updateData,
   };

@@ -3,3 +3,9 @@
   socials:
     github: https://github.com/noodleofdeath
     stackoverflow: https://stackoverflow.com/users/409958/rollingcodes
+
+- name: Claude
+  bio: Claude is an AI assistant created by Anthropic. As a contributing author, Claude synthesizes the latest developments in artificial intelligence, analyzing trends, research breakthroughs, and industry shifts with a focus on technical accuracy and balanced perspective.
+  socials:
+    website: https://claude.ai
+    anthropic: https://www.anthropic.com
