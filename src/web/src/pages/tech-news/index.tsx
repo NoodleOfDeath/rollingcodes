@@ -13,7 +13,7 @@ import {
 import { GetStaticProps } from 'next';
 
 import { NewsCard } from '~/components/News/NewsCard';
-import { getAINews, RSSNewsItem } from '~/utils/rss';
+import { RSSNewsItem, getAINews } from '~/utils/rss';
 
 type TechNewsPageProps = {
   news: RSSNewsItem[];
@@ -31,7 +31,9 @@ const SourceCodeSection = () => {
         mb: 6,
       } }>
       <CardContent sx={ { p: 4 } }>
-        <Box sx={ { alignItems: 'center', display: 'flex', gap: 2, mb: 3 } }>
+        <Box sx={ {
+          alignItems: 'center', display: 'flex', gap: 2, mb: 3, 
+        } }>
           <Code sx={ { color: 'primary.main', fontSize: 32 } } />
           <Typography variant="h5" sx={ { color: 'primary.main', fontWeight: 600 } }>
             Curious how this is done?
@@ -100,40 +102,40 @@ const SourceCodeSection = () => {
 const TechNewsPage: React.FC<TechNewsPageProps> = ({ news }) => {
   return (
     <Container maxWidth="lg" sx={ { py: 8 } }>
-        <Box sx={ { mb: 6, textAlign: 'center' } }>
-          <Typography
-            variant="h2"
-            component="h1"
-            gutterBottom
-            sx={ {
-              color: 'primary.main',
-              fontWeight: 700,
-            } }>
-            Tech News
-          </Typography>
-          <Typography variant="h6" color="text.secondary" sx={ { maxWidth: 800, mx: 'auto' } }>
-            Latest news from leading technology and AI publications
+      <Box sx={ { mb: 6, textAlign: 'center' } }>
+        <Typography
+          variant="h2"
+          component="h1"
+          gutterBottom
+          sx={ {
+            color: 'primary.main',
+            fontWeight: 700,
+          } }>
+          Tech News
+        </Typography>
+        <Typography variant="h6" color="text.secondary" sx={ { maxWidth: 800, mx: 'auto' } }>
+          Latest news from leading technology and AI publications
+        </Typography>
+      </Box>
+
+      <SourceCodeSection />
+
+      <Grid container spacing={ 4 }>
+        {news.map((item, index) => (
+          <Grid item xs={ 12 } key={ `${item.link}-${index}` }>
+            <NewsCard news={ item } />
+          </Grid>
+        ))}
+      </Grid>
+
+      {news.length === 0 && (
+        <Box sx={ { py: 8, textAlign: 'center' } }>
+          <Typography variant="h6" color="text.secondary">
+            No news articles available at the moment.
           </Typography>
         </Box>
-
-        <SourceCodeSection />
-
-        <Grid container spacing={ 4 }>
-          {news.map((item, index) => (
-            <Grid item xs={ 12 } key={ `${item.link}-${index}` }>
-              <NewsCard news={ item } />
-            </Grid>
-          ))}
-        </Grid>
-
-        {news.length === 0 && (
-          <Box sx={ { py: 8, textAlign: 'center' } }>
-            <Typography variant="h6" color="text.secondary">
-              No news articles available at the moment.
-            </Typography>
-          </Box>
-        )}
-      </Container>
+      )}
+    </Container>
   );
 };
 

@@ -10,7 +10,6 @@ import {
   Twitter as TwitterIcon,
   Link as WebIcon,
 } from '@mui/icons-material';
-
 import styled from 'styled-components';
 
 import { ResumeEducation } from './ResumeEducation';
@@ -219,7 +218,9 @@ export const ResumeRenderer = ({ targetRef, presetStyleOverride }: ResumeRendere
             {(data.contact.links || []).map((link, index) => (
               <React.Fragment key={ index }>
                 <div>|</div>
-                <div style={ { alignItems: 'center', display: 'flex', gap: '4px' } }>
+                <div style={ {
+                  alignItems: 'center', display: 'flex', gap: '4px', 
+                } }>
                   {getIconComponent(link.icon)}
                   <a
                     href={ link.url }

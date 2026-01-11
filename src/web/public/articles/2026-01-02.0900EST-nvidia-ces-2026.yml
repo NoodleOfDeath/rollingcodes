@@ -1,0 +1,17 @@
+- title: |
+    [AI Written] NVIDIA Dominated CES 2026: Robots, Reasoning, and the "Cosmos"
+- author: Thom Morgan
+- readtime: 5 minutes
+- tags: NVIDIA, CES 2026, Robotics, Physical AI, World Models
+- content: |
+    If 2025 was the year of the LLM, 2026 is shaping up to be the year of **Physical AI**. NVIDIA kicked off the year at CES Las Vegas with a keynote that left no doubt: the virtual and physical worlds are merging.
+
+    Jensen Huang unveiled **Project Cosmos**, a foundational world model designed not just to generate video, but to *understand* physics.
+
+    ## Key Announcements
+
+    - **GR00T 2.0**: The humanoid robot control foundation model has received a massive upgrade, now capable of one-shot learning for complex household tasks.
+    - **Alpamayo**: A new reasoning-first architecture for autonomous vehicles that "thinks" before it drives, moving away from pure reflex-based nets.
+    - **Jetson T4000**: A Blackwell-based edge module bringing server-class inference to drones and factory arms.
+
+    "We are giving AI a body," Huang declared. With partnerships announced with Boston Dynamics and Tesla, the "ChatGPT moment" for robotics might finally be here.

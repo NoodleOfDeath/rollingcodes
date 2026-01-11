@@ -103,7 +103,7 @@ const Layout = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const [aboutMenuAnchor, setAboutMenuAnchor] = React.useState<null | HTMLElement>(null);
+  const [aboutMenuAnchor, setAboutMenuAnchor] = React.useState<HTMLElement | null>(null);
   const [mobileAboutOpen, setMobileAboutOpen] = React.useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {

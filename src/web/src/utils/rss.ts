@@ -18,39 +18,39 @@ const RSS_FEEDS = [
 
 const STATIC_NEWS: RSSNewsItem[] = [
   {
-    title: '[AI Written] Anthropic Unveils Claude Opus 4.5: The New King of Code?',
+    content: 'Anthropic has introduced Claude Opus 4.5, a model that reportedly outperforms GPT-5.1 in complex reasoning and coding tasks. This release marks a significant shift in the LLM landscape, with Opus 4.5 demonstrating "self-improving" capabilities in agentic workflows. "It\u2019s not just about benchmarks anymore; it\u2019s about reliable autonomy," stated Dario Amodei during the launch.',
     link: 'https://www.anthropic.com/news/claude-opus-4-5',
     pubDate: new Date('2025-11-28T10:00:00Z'),
-    content: 'Anthropic has introduced Claude Opus 4.5, a model that reportedly outperforms GPT-5.1 in complex reasoning and coding tasks. This release marks a significant shift in the LLM landscape, with Opus 4.5 demonstrating "self-improving" capabilities in agentic workflows. "It\u2019s not just about benchmarks anymore; it\u2019s about reliable autonomy," stated Dario Amodei during the launch.',
     source: 'Anthropic Blog',
+    title: '[AI Written] Anthropic Unveils Claude Opus 4.5: The New King of Code?',
   },
   {
-    title: '[AI Written] OpenAI & AWS Forge $38B Alliance: The Cloud Wars Heat Up',
+    content: 'In a stunning move, OpenAI has signed a multiyear, $38 billion partnership with AWS, signaling a potential diversification away from exclusive reliance on Azure. This "model-cloud" exclusivity deal ensures OpenAI has the compute power needed for its next generation of "Thinking" models, while AWS solidifies its position as a premier AI infrastructure provider.',
     link: 'https://openai.com/blog/aws-partnership-2025',
     pubDate: new Date('2025-12-05T14:30:00Z'),
-    content: 'In a stunning move, OpenAI has signed a multiyear, $38 billion partnership with AWS, signaling a potential diversification away from exclusive reliance on Azure. This "model-cloud" exclusivity deal ensures OpenAI has the compute power needed for its next generation of "Thinking" models, while AWS solidifies its position as a premier AI infrastructure provider.',
     source: 'TechCrunch',
+    title: '[AI Written] OpenAI & AWS Forge $38B Alliance: The Cloud Wars Heat Up',
   },
   {
-    title: '[AI Written] EU AI Act Enters Enforcement Phase: Is Big Tech Ready?',
+    content: 'The European Union\'s AI Act has officially entered its first major enforcement phase this week. Companies operating foundation models in the EU now face strict transparency requirements and potential fines for non-compliance. "The grace period is over," warned the European AI Office, as audits for high-risk AI systems begin immediately.',
     link: 'https://ec.europa.eu/commission/presscorner/detail/en/ip_25_4567',
     pubDate: new Date('2025-12-12T09:15:00Z'),
-    content: 'The European Union\'s AI Act has officially entered its first major enforcement phase this week. Companies operating foundation models in the EU now face strict transparency requirements and potential fines for non-compliance. "The grace period is over," warned the European AI Office, as audits for high-risk AI systems begin immediately.',
     source: 'The Verge',
+    title: '[AI Written] EU AI Act Enters Enforcement Phase: Is Big Tech Ready?',
   },
   {
-    title: '[AI Written] Google Acquires Wiz for $32B to Fortify Cloud Security AI',
+    content: 'Google has finalized its acquisition of cloud security firm Wiz for a staggering $32 billion. This move is seen as a direct counter to Microsoft\'s dominance in enterprise security. Google plans to integrate Wiz\'s CNC (Cloud Native Computing) security graph into Gemini, creating an "AI Security Analyst" capable of real-time threat detection and automated remediation.',
     link: 'https://blog.google/products/google-cloud/wiz-acquisition',
     pubDate: new Date('2025-12-19T11:00:00Z'),
-    content: 'Google has finalized its acquisition of cloud security firm Wiz for a staggering $32 billion. This move is seen as a direct counter to Microsoft\'s dominance in enterprise security. Google plans to integrate Wiz\'s CNC (Cloud Native Computing) security graph into Gemini, creating an "AI Security Analyst" capable of real-time threat detection and automated remediation.',
     source: 'Google Cloud Blog',
+    title: '[AI Written] Google Acquires Wiz for $32B to Fortify Cloud Security AI',
   },
   {
-    title: '[AI Written] 2025 in Review: From Agentic AI to the Trillion-Parameter Era',
+    content: 'As 2025 draws to a close, we reflect on a year defined by the rise of "Agentic AI." From the early promise of Devin to the robust autonomy of Claude 4.5 and Gemini 3 Flash, AI is no longer just a chatbot\u2014it is a coworker. With over $100B invested in hardware alone this year, 2026 promises the arrival of the "Zettascale" training run.',
     link: 'https://www.wired.com/story/ai-year-in-review-2025',
     pubDate: new Date('2025-12-26T16:45:00Z'),
-    content: 'As 2025 draws to a close, we reflect on a year defined by the rise of "Agentic AI." From the early promise of Devin to the robust autonomy of Claude 4.5 and Gemini 3 Flash, AI is no longer just a chatbot\u2014it is a coworker. With over $100B invested in hardware alone this year, 2026 promises the arrival of the "Zettascale" training run.',
     source: 'Wired',
+    title: '[AI Written] 2025 in Review: From Agentic AI to the Trillion-Parameter Era',
   },
 ];
 

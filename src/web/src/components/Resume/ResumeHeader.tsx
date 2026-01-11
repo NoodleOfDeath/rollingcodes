@@ -66,17 +66,16 @@ export const ResumeHeader = ({ contact }: ResumeHeaderProps) => {
         <Anchor icon={ mdiPin } color='white'>
           {contact.location}
         </Anchor>
-        {contact.github && (
-          typeof contact.github === 'string' ? (
-            <LinkAnchor
-              href={ contact.github }
-              target="_blank"
-              icon={ mdiGithub }
-              color='cyan'>
-              {contact.github.replace('https://', '')}
-            </LinkAnchor>
-          ) : contact.github
-        )}
+        {(contact.links || []).filter(l => l.icon === 'github').map((link, i) => (
+          <LinkAnchor
+            key={ i }
+            href={ link.url }
+            target="_blank"
+            icon={ mdiGithub }
+            color='cyan'>
+            {link.label}
+          </LinkAnchor>
+        ))}
         {contact.website && (
           typeof contact.website === 'string' ? (
             <LinkAnchor

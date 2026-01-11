@@ -102,10 +102,18 @@ export async function fetchArticlesFromAPI(options: {
   }
 
   const params = new URLSearchParams();
-  if (options.limit) params.set('limit', options.limit.toString());
-  if (options.offset) params.set('offset', options.offset.toString());
-  if (options.author) params.set('author', options.author);
-  if (options.tags) params.set('tags', options.tags.join(','));
+  if (options.limit) {
+    params.set('limit', options.limit.toString());
+  }
+  if (options.offset) {
+    params.set('offset', options.offset.toString());
+  }
+  if (options.author) {
+    params.set('author', options.author);
+  }
+  if (options.tags) {
+    params.set('tags', options.tags.join(','));
+  }
 
   const response = await fetch(`${API_URL}/api/articles?${params}`);
 
@@ -117,8 +125,8 @@ export async function fetchArticlesFromAPI(options: {
 
   return data.articles.map((article: any) => ({
     ...article,
-    date: new Date(article.published_at),
     authorData: getAuthorByName(article.author),
+    date: new Date(article.published_at),
   }));
 }
 
@@ -141,8 +149,8 @@ export async function fetchArticleBySlugFromAPI(slug: string): Promise<Article |
 
   return {
     ...article,
-    date: new Date(article.published_at),
     authorData: getAuthorByName(article.author),
+    date: new Date(article.published_at),
   };
 }
 

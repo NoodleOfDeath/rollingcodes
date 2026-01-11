@@ -67,17 +67,17 @@ export type ResumeVersion = 'ic' | 'tech-lead';
 // Shared data
 const sharedContact: ContactInfo = {
   email: 'thom@noodleofdeath.com',
+  links: [
+    {
+      icon: 'github',
+      label: 'github.com/noodleofdeath',
+      url: 'https://www.github.com/noodleofdeath',
+    },
+  ],
   location: 'Everett, MA',
   name: 'Thom Morgan',
   phone: '(703) 215-5735',
   title: 'Technical Lead & Security Red Team Operator | AI Systems Evaluator | Full Stack Pentester',
-  links: [
-    {
-      label: 'github.com/noodleofdeath',
-      url: 'https://www.github.com/noodleofdeath',
-      icon: 'github',
-    },
-  ],
 };
 
 const sharedEducation: Education = {

@@ -22,7 +22,11 @@ import {
 } from '@mui/material';
 
 import { useResumeContext } from '~/contexts/ResumeContext';
-import { ContactLink, ResumeData, WorkExperience } from '~/data/resume';
+import {
+  ContactLink,
+  ResumeData,
+  WorkExperience,
+} from '~/data/resume';
 
 const ICON_OPTIONS = [
   { label: 'GitHub', value: 'github' },
@@ -310,14 +314,16 @@ export const ResumeDataEditor = ({
               
               <Typography variant="subtitle2" sx={ { mt: 2 } }>Dynamic Links</Typography>
               {(localData.contact.links || []).map((link, index) => (
-                <Box key={ index } sx={ {
-                  border: '1px solid #ddd',
-                  borderRadius: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 1,
-                  p: 1.5,
-                } }>
+                <Box
+                  key={ index }
+                  sx={ {
+                    border: '1px solid #ddd',
+                    borderRadius: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 1,
+                    p: 1.5,
+                  } }>
                   <Box sx={ { display: 'flex', gap: 1 } }>
                     <TextField
                       fullWidth
