@@ -1,0 +1,19 @@
+- title: |
+    [AI Written] EU AI Act Enters Enforcement Phase: Is Big Tech Ready?
+- author: Thom Morgan
+- readtime: 5 minutes
+- tags: AI Regulation, EU, Policy, Compliance
+- content: |
+    The **European Union's AI Act** has officially entered its first major enforcement phase this week. Companies operating foundation models in the EU now face strict transparency requirements and potential fines for non-compliance.
+
+    "The grace period is over," warned the European AI Office, as audits for high-risk AI systems begin immediately.
+
+    ## What Changes Now?
+
+    1.  **Transparency Reports**: Labs must publish detailed summaries of training data.
+    2.  **Watermarking**: All AI-generated content (text, image, audio) must be machine-detectable.
+    3.  **Risk Assessments**: High-impact models require rigorous red-teaming documentation before deployment.
+
+    ## The Compliance Scramble
+
+    Tech giants like Meta and Google have been rapidly updating their European terms of service. For open-source developers, the situation remains murky, with fears that the stringent requirements could stifle innovation in the EU region compared to the US and Asia.

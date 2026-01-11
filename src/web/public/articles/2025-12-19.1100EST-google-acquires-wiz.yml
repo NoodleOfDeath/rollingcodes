@@ -1,0 +1,15 @@
+- title: |
+    [AI Written] Google Acquires Wiz for $32B to Fortify Cloud Security AI
+- author: Thom Morgan
+- readtime: 4 minutes
+- tags: Cybersecurity, Google Cloud, Acquisitions, AI Security
+- content: |
+    **Google** has finalized its acquisition of cloud security firm **Wiz** for a staggering **$32 billion**. This move is seen as a direct counter to Microsoft's dominance in enterprise security.
+
+    Google plans to integrate Wiz's CNC (Cloud Native Computing) security graph into **Gemini**, creating an "AI Security Analyst" capable of real-time threat detection and automated remediation.
+
+    ## The AI Security Analyst
+
+    The vision is a system that doesn't just alert admins to vulnerabilities but autonomously patches them. By combining Wiz's deep visibility into cloud infrastructure with Gemini's reasoning capabilities, Google aims to "solve" cloud misconfigurations—the #1 cause of data breaches.
+
+    This acquisition is the largest in Google's history, underscoring the critical importance of secure AI infrastructure in 2026 and beyond.
