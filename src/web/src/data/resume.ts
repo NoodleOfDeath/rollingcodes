@@ -7,8 +7,14 @@ export type ContactInfo = {
   phone: React.ReactNode;
   location: React.ReactNode;
   drunkmode?: React.ReactNode;
-  github?: React.ReactNode;
   website?: React.ReactNode;
+  links?: ContactLink[];
+};
+
+export type ContactLink = {
+  label: string;
+  url: string;
+  icon: string;
 };
 
 export type Education = {
@@ -61,11 +67,17 @@ export type ResumeVersion = 'ic' | 'tech-lead';
 // Shared data
 const sharedContact: ContactInfo = {
   email: 'thom@noodleofdeath.com',
-  github: 'https://www.github.com/noodleofdeath',
   location: 'Everett, MA',
   name: 'Thom Morgan',
   phone: '(703) 215-5735',
   title: 'Technical Lead & Security Red Team Operator | AI Systems Evaluator | Full Stack Pentester',
+  links: [
+    {
+      label: 'github.com/noodleofdeath',
+      url: 'https://www.github.com/noodleofdeath',
+      icon: 'github',
+    },
+  ],
 };
 
 const sharedEducation: Education = {
@@ -87,10 +99,13 @@ const sharedProgrammingLanguages: SkillCategory = {
   items: [
     { description: 'Primary language for full-stack development and automation', title: 'TypeScript' },
     { description: 'AI/ML development, data science, adversarial testing', title: 'Python' },
+    { description: 'Guardrails definition language for LLM agents (NeMo)', title: 'Colang' },
     { description: 'Full-stack web development, Node.js backend services', title: 'JavaScript' },
     { description: 'Systems programming, robotics, embedded development', title: 'Rust' },
     { description: 'Performance-critical applications, robotics middleware', title: 'C++' },
     { description: 'Microservices, concurrent systems, cloud infrastructure', title: 'Go' },
+    { description: 'Native iOS development, mobile security, internal tooling', title: 'Objective-C / Swift / SwiftUI' },
+    { description: 'Native Android development, enterprise systems, JVM interoperability', title: 'Java / Kotlin' },
   ],
   title: 'Programming Languages',
 };
@@ -101,7 +116,8 @@ const sharedFrameworks: SkillCategory = {
     { description: 'LLM orchestration, agents, RAG chains, memory management', title: 'LangChain / LlamaIndex' },
     { description: 'Foundation models, tokenizers, PEFT, inference optimization', title: 'Hugging Face Transformers' },
     { description: 'Vector similarity search, embeddings, semantic retrieval', title: 'Pinecone / Weaviate / ChromaDB' },
-    { description: 'React 18+, Next.js 14+, server components, streaming SSR', title: 'React / Next.js' },
+    { description: 'React 18+, Next.js 14+, React Native, server components, streaming SSR', title: 'React / Next.js / React Native' },
+    { description: 'Cross-platform mobile development, custom renderers, performance profiling', title: 'Flutter' },
     { description: 'FastAPI, Express, GraphQL, gRPC, WebSockets, event-driven APIs', title: 'Backend Frameworks' },
     { description: 'Container orchestration, service mesh (Istio), helm charts', title: 'Docker / Kubernetes' },
     { description: 'Pytest, Jest, Playwright, chaos engineering, contract testing', title: 'Testing Frameworks' },
@@ -111,20 +127,21 @@ const sharedFrameworks: SkillCategory = {
 
 const sharedDevOps: SkillCategory = {
   items: [
-    { description: 'EC2, ECS, Lambda, SageMaker, Bedrock, S3, RDS, VPC, IAM', title: 'AWS Cloud Platform' },
+    { description: 'AWS (EC2, ECS, Lambda), DigitalOcean, Supabase, Vercel', title: 'Cloud Platforms' },
     { description: 'GitOps, ArgoCD, Flux, container orchestration, service mesh (Istio)', title: 'Kubernetes Ecosystem' },
     { description: 'IaC, multi-cloud provisioning, state management, policy as code', title: 'Terraform / Pulumi' },
-    { description: 'GitHub Actions, GitLab CI, CircleCI, pipeline-as-code', title: 'CI/CD Platforms' },
+    { description: 'GitHub Actions, GitLab CI, Jenkins, CircleCI, Buildkite', title: 'CI/CD Platforms' },
     { description: 'Observability, APM, distributed tracing, log aggregation, SLOs', title: 'Datadog / Prometheus / Grafana' },
     { description: 'Configuration management, secret management (Vault), drift detection', title: 'Infrastructure Automation' },
+    { description: 'Cursor, Bolt, Antigravity, Lovable, v0', title: 'AI-Native Development' },
   ],
   title: 'DevOps & Cloud Infrastructure',
 };
 
 const sharedSecurityTools: SkillCategory = {
   items: [
-    { description: 'Burp Suite, Metasploit, Cobalt Strike, BloodHound, OWASP ZAP, custom tooling', title: 'Security Testing Tools' },
-    { description: 'MITRE ATT&CK, threat intelligence, incident response, forensics', title: 'Red/Purple Team Operations' },
+    { description: 'Burp Suite, Metasploit, Garak, Pyrit, Cobalt Strike, BloodHound, OWASP ZAP, Identv2', title: 'Security Testing Tools' },
+    { description: 'MITRE ATT&CK/ATLAS, threat intelligence, incident response, forensics', title: 'Red/Purple Team Operations' },
     { description: 'NIST, FedRAMP, HIPAA, GDPR, SOC 2, compliance automation', title: 'Security Compliance' },
   ],
   title: 'Security Tools & Compliance',
@@ -143,6 +160,7 @@ const sharedMethodologies: SkillCategory = {
 const sharedRobotics: SkillCategory = {
   items: [
     { description: 'Robot simulation environment for testing and validation', title: 'Gazebo' },
+    { description: 'Photorealistic simulation and synthetic data generation', title: 'NVIDIA Isaac Sim' },
     { description: 'Physics engine for robotics and reinforcement learning', title: 'MuJoCo' },
   ],
   title: 'Robotics & Simulation',
@@ -159,8 +177,8 @@ export const techLeadResumeData: ResumeData = {
   skills: [
     {
       items: [
-        { description: 'GenAI/LLM security, jailbreak attacks, prompt injection, safety alignment', title: 'LLM Security & Red Teaming' },
-        { description: 'Red teaming AI systems, adversarial ML, model poisoning, evasion attacks', title: 'Adversarial AI Testing' },
+        { description: 'GenAI/LLM security, NeMo/Llama Guardrails, jailbreak attacks, prompt injection', title: 'LLM Jailbreaking & Red Teaming' },
+        { description: 'Red teaming (MITRE ATLAS), proxy model based red teaming, vector db poisoning, sponge examples', title: 'Adversarial AI Testing' },
         { description: 'OWASP Top 10, web/API/mobile pentesting, exploit development, zero-days', title: 'Offensive Security (OSCP)' },
         { description: 'Zero-trust architecture, secure-by-design, threat modeling (STRIDE)', title: 'Security Architecture & Strategy' },
         { description: 'DevSecOps, shift-left security, SAST/DAST/SCA, security-as-code', title: 'Application Security Automation' },
@@ -202,9 +220,9 @@ export const techLeadResumeData: ResumeData = {
       achievements: [
         'Led cross-functional agile team of 6-7 senior developers in cloud-native microservices architecture and embedded GenAI/LLM deployment for Spot and Atlas robots. Orchestrated security red team operations, identifying and remediating 150+ vulnerabilities across web applications, RESTful/GraphQL APIs, and ML pipelines. Reduced critical security findings by 47% year-over-year through shift-left security, automated SQA pipelines, and DevSecOps practices.',
         'Established GitOps-based CI/CD infrastructure leveraging containerization (Docker/Kubernetes) with automated security testing, SAST/DAST scanning, and dependency vulnerability checks. Accelerated release cycles by 35% while maintaining zero security regressions in production, implementing infrastructure-as-code (Terraform) and zero-trust network architecture principles.',
-        'Directed engineering of adversarial AI testing frameworks for transformer-based vision models (ViT) and reinforcement learning policies. Designed automated red team attack simulation probing LLM jailbreaks, prompt injection, RAG poisoning, and model inversion attacks, identifying 40+ critical AI safety vulnerabilities pre-production using MLSecOps best practices.',
+        'Directed engineering of adversarial AI testing frameworks for transformer-based vision models (ViT) and reinforcement learning policies. Designed automated red team attack simulation probing LLM jailbreaks, prompt injection, RAG poisoning, vector db poisoning, proxy model based red teaming, and sponge examples. Identified 40+ critical AI safety vulnerabilities pre-production using MLSecOps best practices.',
         'Mentored team in secure-by-design architecture, conducting weekly threat modeling (STRIDE), security champions training, and pair programming sessions. Improved team security awareness scores by 60% and reduced security-related bugs by 52% through implementation of security guardrails and automated policy enforcement.',
-        'Architected observable AI/ML infrastructure with real-time model performance monitoring, drift detection using statistical process control, and automated retraining pipelines. Applied advanced prompt engineering, few-shot learning, and retrieval-augmented generation (RAG) achieving 23% improvement in safety-critical edge case detection for autonomous navigation systems.',
+        'Architected observable AI/ML infrastructure with real-time model performance monitoring, drift detection using statistical process control, and automated retraining pipelines. Applied advanced prompt engineering and retrieval-augmented generation (RAG), ensuring robot manuals are sanitized of hidden malicious instructions. Mitigated semantic perturbation via perplexity scoring, achieving 23% improvement in safety-critical edge case detection.',
       ],
       company: {
         href: 'https://www.bostondynamics.com',
@@ -263,8 +281,8 @@ export const icResumeData: ResumeData = {
   skills: [
     {
       items: [
-        { description: 'GenAI/LLM security, jailbreak attacks, prompt injection, safety alignment', title: 'LLM Security & Red Teaming' },
-        { description: 'Red teaming AI systems, adversarial ML, model poisoning, evasion attacks', title: 'Adversarial AI Testing' },
+        { description: 'GenAI/LLM security, NeMo/Llama Guardrails, jailbreak attacks, prompt injection', title: 'LLM Jailbreaking & Red Teaming' },
+        { description: 'Red teaming (MITRE ATLAS), proxy model based red teaming, vector db poisoning, sponge examples', title: 'Adversarial AI Testing' },
         { description: 'RAG architectures, vector databases (Pinecone, Weaviate), semantic search', title: 'Retrieval-Augmented Generation' },
         { description: 'LoRA, QLoRA, PEFT, instruction tuning, RLHF, domain adaptation', title: 'LLM Fine-tuning & Optimization' },
         { description: 'OWASP Top 10, web/API/mobile pentesting, exploit development, zero-days', title: 'Offensive Security (OSCP)' },
@@ -275,10 +293,10 @@ export const icResumeData: ResumeData = {
     {
       items: [
         { description: 'Manual code review, automated scanning, SAST/DAST/SCA integration', title: 'Application Security Testing' },
-        { description: 'Burp Suite, Metasploit, Cobalt Strike, BloodHound, custom exploit development', title: 'Penetration Testing' },
+        { description: 'Burp Suite, Metasploit, Garak, Pyrit, Cobalt Strike, BloodHound, OWASP ZAP, Identv2', title: 'Security Testing Tools' },
         { description: 'Zero-trust architecture, secure-by-design, threat modeling (STRIDE)', title: 'Security Architecture' },
         { description: 'DevSecOps, shift-left security, CI/CD security automation', title: 'Security Automation' },
-        { description: 'MITRE ATT&CK, threat intelligence, incident response, forensics', title: 'Red Team Operations' },
+        { description: 'MITRE ATT&CK/ATLAS, threat intelligence, incident response, forensics', title: 'Red Team Operations' },
         { description: 'NIST, FedRAMP, HIPAA, GDPR, SOC 2, security compliance', title: 'Compliance & Governance' },
       ],
       title: 'Offensive Security & AppSec',
@@ -305,11 +323,11 @@ export const icResumeData: ResumeData = {
   workExperience: [
     {
       achievements: [
-        'Engineered sophisticated adversarial test harnesses for transformer-based vision models (ViT) and reinforcement learning policies deployed on Spot and Atlas robots. Designed automated red team attack frameworks probing LLM jailbreaks, prompt injection, RAG poisoning, model inversion, and membership inference attacks. Identified 40+ critical AI safety vulnerabilities including edge cases causing catastrophic failures in autonomous navigation systems.',
-        'Performed comprehensive security assessments of GenAI/LLM systems, discovering novel attack vectors including context window poisoning, embedding space manipulation, and semantic adversarial perturbations. Developed custom tooling for automated LLM security testing achieving 3x faster vulnerability discovery. Implemented defensive measures including input sanitization, output filtering, and adversarial training reducing successful attacks by 64%.',
+        'Engineered sophisticated adversarial test harnesses for transformer-based vision models (ViT) and reinforcement learning policies deployed on Spot and Atlas robots. Designed automated red team attack frameworks probing LLM jailbreaks, prompt injection, RAG/Vector DB poisoning, proxy model based red teaming, (and) sponge examples. Identified 40+ critical AI safety vulnerabilities including edge cases causing catastrophic failures.',
+        'Performed comprehensive security assessments of GenAI/LLM systems, discovering novel attack vectors including context window poisoning, embedding space manipulation, and semantic adversarial perturbations. Developed custom tooling (Garak/Pyrit) for automated testing. Implemented defenses including input sanitization, NeMo guardrails, and perplexity scoring, reducing successful attacks by 64%.',
         'Conducted deep technical penetration testing across cloud-native microservices, RESTful/GraphQL APIs, and ML inference pipelines. Discovered and exploited critical vulnerabilities including authentication bypasses, privilege escalation, SQL injection, and model extraction attacks. Developed proof-of-concept exploits and detailed technical remediation guidance resulting in 47% reduction in critical security findings.',
         'Built end-to-end security automation integrating SAST/DAST/SCA tools into GitOps CI/CD pipelines. Implemented infrastructure-as-code security scanning, container vulnerability analysis, and secret detection using Trivy, Snyk, and custom policy engines (OPA). Automated security testing reduced manual review time by 60% while maintaining zero false negatives for critical vulnerabilities.',
-        'Applied advanced prompt engineering, few-shot learning, and RAG optimization techniques to LLM-powered robotics perception systems. Fine-tuned transformer models using LoRA/PEFT achieving 23% improvement in safety-critical edge case detection. Implemented real-time model monitoring, drift detection, and adversarial robustness testing for production AI systems processing millions of inferences daily.',
+        'Applied RAG optimization and prompt engineering, ensuring robot manuals and docs are sanitized of hidden malicious instructions. Fine-tuned transformer models using LoRA/PEFT achieving 23% improvement in safety-critical edge case detection. Implemented real-time model monitoring, drift detection, and adversarial robustness testing for production AI systems processing millions of inferences daily.',
       ],
       company: {
         href: 'https://www.bostondynamics.com',

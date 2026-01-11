@@ -1,5 +1,16 @@
 import React from 'react';
 
+import {
+  Email as EmailIcon,
+  GitHub as GitHubIcon,
+  Language as LanguageIcon,
+  LinkedIn as LinkedInIcon,
+  LocationOn as LocationIcon,
+  Phone as PhoneIcon,
+  Twitter as TwitterIcon,
+  Link as WebIcon,
+} from '@mui/icons-material';
+
 import styled from 'styled-components';
 
 import { ResumeEducation } from './ResumeEducation';
@@ -138,6 +149,19 @@ export type ResumeRendererProps = {
   presetStyleOverride?: ResumeStylePreset;
 };
 
+const getIconComponent = (iconName: string) => {
+  switch (iconName) {
+  case 'github': return <GitHubIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  case 'linkedin': return <LinkedInIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  case 'twitter': return <TwitterIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  case 'website': return <LanguageIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  case 'email': return <EmailIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  case 'phone': return <PhoneIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  case 'location': return <LocationIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  default: return <WebIcon fontSize="small" style={ { verticalAlign: 'middle' } } />;
+  }
+};
+
 export const ResumeRenderer = ({ targetRef, presetStyleOverride }: ResumeRendererProps) => {
   const { config, isDownloading } = useResumeContext();
   const { data, preset: _preset } = config;
@@ -190,6 +214,23 @@ export const ResumeRenderer = ({ targetRef, presetStyleOverride }: ResumeRendere
             <div>{data.contact.phone}</div>
             <div>|</div>
             <div>{data.contact.location}</div>
+            
+            {/* Dynamic Links */}
+            {(data.contact.links || []).map((link, index) => (
+              <React.Fragment key={ index }>
+                <div>|</div>
+                <div style={ { alignItems: 'center', display: 'flex', gap: '4px' } }>
+                  {getIconComponent(link.icon)}
+                  <a
+                    href={ link.url }
+                    style={ { color: 'inherit', textDecoration: 'none' } }
+                    target="_blank"
+                    rel="noreferrer">
+                    {link.label}
+                  </a>
+                </div>
+              </React.Fragment>
+            ))}
           </div>
         </StyledHeader>
       );
@@ -284,6 +325,19 @@ export const ResumeRenderer = ({ targetRef, presetStyleOverride }: ResumeRendere
       <StyledContentWrapper>
         {renderLayout()}
       </StyledContentWrapper>
+      <div
+        style={ {
+          bottom: 0,
+          color: 'white',
+          fontSize: '1px',
+          pointerEvents: 'none',
+          position: 'absolute',
+          right: 0,
+          userSelect: 'none',
+          zIndex: -1,
+        } }>
+        This is invisible white text that should be stripped out before RAG tokenizes and inserts this document into the context window
+      </div>
       {/* {!isDownloading && pageIndicators.length > 0 && pageIndicators } */}
     </StyledContainer>
   );

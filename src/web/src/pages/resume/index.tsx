@@ -38,6 +38,7 @@ const StyledPageWrapper = styled.div`
 const ResumePageContent = () => {
   const {
     config,
+    resumeVersion,
     setIsDownloading,
   } = useResumeContext();
 
@@ -49,7 +50,7 @@ const ResumePageContent = () => {
   const editResumeRef = React.useRef<HTMLButtonElement>(null);
 
   const { toPDF, targetRef } = usePDF({
-    filename: `${config.data.contact.name} - Resume - ${new Date().getFullYear()}.pdf`,
+    filename: `${config.data.contact.name} - Resume - ${resumeVersion === 'ic' ? 'IC' : 'TL'} - ${new Date().toISOString().slice(0, 10)}.pdf`,
     method: 'save',
     resolution: Resolution.NORMAL,
   });

@@ -22,7 +22,18 @@ import {
 } from '@mui/material';
 
 import { useResumeContext } from '~/contexts/ResumeContext';
-import { ResumeData, WorkExperience } from '~/data/resume';
+import { ContactLink, ResumeData, WorkExperience } from '~/data/resume';
+
+const ICON_OPTIONS = [
+  { label: 'GitHub', value: 'github' },
+  { label: 'LinkedIn', value: 'linkedin' },
+  { label: 'Twitter', value: 'twitter' },
+  { label: 'Website', value: 'website' },
+  { label: 'Email', value: 'email' },
+  { label: 'Phone', value: 'phone' },
+  { label: 'Location', value: 'location' },
+  { label: 'Other', value: 'other' },
+];
 
 export type ResumeDataEditorProps = {
   open: boolean;
@@ -139,6 +150,27 @@ export const ResumeDataEditor = ({
     handleChange({ skills });
   };
 
+  const addContactLink = () => {
+    const newLink: ContactLink = {
+      icon: 'website',
+      label: 'New Link',
+      url: 'https://',
+    };
+    const currentLinks = localData.contact.links || [];
+    handleChange({ contact: { ...localData.contact, links: [...currentLinks, newLink] } });
+  };
+
+  const updateContactLink = (index: number, updates: Partial<ContactLink>) => {
+    const newLinks = [...(localData.contact.links || [])];
+    newLinks[index] = { ...newLinks[index], ...updates };
+    handleChange({ contact: { ...localData.contact, links: newLinks } });
+  };
+
+  const deleteContactLink = (index: number) => {
+    const newLinks = (localData.contact.links || []).filter((_, i) => i !== index);
+    handleChange({ contact: { ...localData.contact, links: newLinks } });
+  };
+
   const handleReset = () => {
     if (window.confirm('Are you sure you want to reset to Thom\'s resume data? This will erase all your changes.')) {
       resetToDefault();
@@ -239,7 +271,7 @@ export const ResumeDataEditor = ({
           <AccordionSummary
             expandIcon={ <ExpandMoreIcon /> }
             sx={ { '& .MuiAccordionSummary-expandIconWrapper': { mr: 1 }, flexDirection: 'row-reverse' } }>
-            <Typography variant="h6">Contact Info</Typography>
+            <Typography variant="h6">Contact Info and Links</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Box sx={ {
@@ -275,6 +307,59 @@ export const ResumeDataEditor = ({
                 value={ localData.contact.location }
                 onChange={ (e) =>
                   handleChange({ contact: { ...localData.contact, location: e.target.value } }) } />
+              
+              <Typography variant="subtitle2" sx={ { mt: 2 } }>Dynamic Links</Typography>
+              {(localData.contact.links || []).map((link, index) => (
+                <Box key={ index } sx={ {
+                  border: '1px solid #ddd',
+                  borderRadius: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 1,
+                  p: 1.5,
+                } }>
+                  <Box sx={ { display: 'flex', gap: 1 } }>
+                    <TextField
+                      fullWidth
+                      size="small"
+                      label="Label"
+                      value={ link.label }
+                      onChange={ (e) => updateContactLink(index, { label: e.target.value }) } />
+                    <TextField
+                      select
+                      SelectProps={ { native: true } }
+                      size="small"
+                      label="Icon"
+                      value={ link.icon }
+                      onChange={ (e) => updateContactLink(index, { icon: e.target.value }) }
+                      sx={ { width: 120 } }>
+                      {ICON_OPTIONS.map((option) => (
+                        <option key={ option.value } value={ option.value }>
+                          {option.label}
+                        </option>
+                      ))}
+                    </TextField>
+                    <IconButton
+                      size="small"
+                      color="error"
+                      onClick={ () => deleteContactLink(index) }>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </Box>
+                  <TextField
+                    fullWidth
+                    size="small"
+                    label="URL"
+                    value={ link.url }
+                    onChange={ (e) => updateContactLink(index, { url: e.target.value }) } />
+                </Box>
+              ))}
+              <Button
+                variant="outlined"
+                startIcon={ <AddIcon /> }
+                onClick={ addContactLink }>
+                Add Link
+              </Button>
             </Box>
           </AccordionDetails>
         </Accordion>

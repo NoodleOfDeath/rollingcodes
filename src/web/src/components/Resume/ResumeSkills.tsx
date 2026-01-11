@@ -10,6 +10,15 @@ const StyledSkillItem = styled.span`
   cursor: help;
 `;
 
+const PrintOnlyDescription = styled.span`
+  display: none;
+  @media print {
+    display: inline;
+    color: #666;
+    font-size: 0.9em;
+  }
+`;
+
 const StyledSkillsContainer = styled.div`
   display: block;
 `;
@@ -43,7 +52,8 @@ export const ResumeSkills = ({ skills }: ResumeSkillsProps) => {
                   } }>
                   <StyledSkillItem>{skill.title}</StyledSkillItem>
                 </Tooltip>
-                {skillIndex < category.items.length - 1 ? '; ' : ';'}
+                <PrintOnlyDescription>{` (${skill.description})`}</PrintOnlyDescription>
+                <span>{skillIndex < category.items.length - 1 ? '; ' : ';'}</span>
               </React.Fragment>
             ))}
           </StyledSkillsContainer>
